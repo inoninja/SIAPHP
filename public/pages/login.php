@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         try {
             // Get user from database
-            $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
+            $stmt = $pdo->prepare("SELECT id, name, password FROM users WHERE name = ? OR email = ?");
             $stmt->execute([$username, $username]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 // Set session variables
                 $_SESSION["user_id"] = $user['id'];
-                $_SESSION["username"] = $user['username'];
+                $_SESSION["name"] = $user['name'];
                 
                 // Redirect to homepage
                 header("Location: homepage.php");
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
     <?php if (isset($_GET['signup'])) echo "<p style='color:green'>Registration successful! Please login.</p>"; ?>
     <form method="POST" action="">
-        Username or Email: <input type="text" name="username" required><br>
+        Email: <input type="text" name="username" required><br>
         Password: <input type="password" name="password" required><br>
         <input type="submit" value="Login">
     </form>

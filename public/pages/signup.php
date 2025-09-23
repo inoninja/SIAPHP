@@ -5,13 +5,13 @@ require_once __DIR__ . '/../../database/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Input validation and sanitization
-    $username = trim($_POST['username']);
+    $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     
     // Validation checks
-    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+    if (empty($name) || empty($email) || empty($password) || empty($confirm_password)) {
         $error = "All fields are required";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format";
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         try {
             // Check if user exists
-            $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
+            $stmt = $pdo->prepare("SELECT id FROM users WHERE name = ? OR email = ?");
             $stmt->execute([$username, $email]);
             
             if ($stmt->fetch()) {
@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
                 
                 // Insert user with prepared statement
-                $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-                $stmt->execute([$username, $email, $hashed_password]);
+                $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+                $stmt->execute([$name, $email, $hashed_password]);
                 
                 // Redirect to login
                 header("Location: login.php?signup=success");
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h1>Create Account</h1>
     <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
     <form method="POST" action="">
-        Username: <input type="text" name="username" required><br>
+        Name: <input type="text" name="name" required><br>
         Email: <input type="email" name="email" required><br>
         Password: <input type="password" name="password" required><br>
         Confirm Password: <input type="password" name="confirm_password" required><br>
