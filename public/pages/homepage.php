@@ -11,7 +11,7 @@ if (!isset($_SESSION["user_id"])) {
 
 // Get user info
 try {
-    $stmt = $pdo->prepare("SELECT username, email FROM users WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT name, email FROM users WHERE id = ?");
     $stmt->execute([$_SESSION["user_id"]]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -24,7 +24,7 @@ try {
     <title>Homepage</title>
 </head>
 <body>
-    <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>!</h1>
+    <h1>Welcome, <?php echo htmlspecialchars($user['name']); ?>!</h1>
     <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
     <p>This is your secure homepage.</p>
     <a href="../script/logout.php">Logout</a>

@@ -57,5 +57,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Login">
     </form>
     <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+
+    <h2>Or sign in with Google</h2>
+    <div id="g_id_onload"
+         data-client_id="687679280141-1c76j8an22qmklhvenser89qa09mr6fc.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin"
+         data-type="icon"
+         data-size="large"
+         data-theme="outline"
+         data-text="sign_in_with"
+         data-shape="rectangular"
+         data-logo_alignment="left">
+    </div>
+
+    <script>
+    function handleCredentialResponse(response) {
+        // Send the ID token to your backend for verification
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../script/google_login.php'; // New backend endpoint
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'credential';
+        input.value = response.credential;
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    // Handle Google logout
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('google_logout')) {
+            if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
+                google.accounts.id.disableAutoSelect();
+                // Optionally, you can also revoke the token if you want a full sign-out
+                // google.accounts.id.revoke(localStorage.getItem('google_id_token'), () => {
+                //     console.log('Google token revoked.');
+                // });
+                // localStorage.removeItem('google_id_token'); // Clear stored token if any
+            }
+        }
+    };
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>
