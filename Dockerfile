@@ -2,14 +2,18 @@
 FROM php:8.2.12-apache
 
 # Install system dependencies required for PHP extensions.
-# libpq-dev is essential for the PostgreSQL driver (pdo_pgsql).
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Now, install the PostgreSQL driver for PHP. This will succeed because
-# the required system libraries are now present.
+# Install the PostgreSQL driver for PHP.
 RUN docker-php-ext-install pdo pdo_pgsql
 
-# Copy all your project files into the web server's root directory
+# Copy your custom Apache configuration to overwrite the default.
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+# Enable Apache's rewrite module (useful for clean URLs).
+RUN a2enmod rewrite
+
+# Copy all your project files into the web server's root directory.
 COPY . /var/www/html/
