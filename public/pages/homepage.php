@@ -27,6 +27,6 @@ try {
     <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>!</h1>
     <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
     <p>This is your secure homepage.</p>
-    <a href="logout.php">Logout</a>
+    <a href="login.php">Logout</a>
 </body>
 </html>
