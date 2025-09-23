@@ -25,10 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             // Check if user exists
             $stmt = $pdo->prepare("SELECT id FROM users WHERE name = ? OR email = ?");
-            $stmt->execute([$username, $email]);
+            $stmt->execute([$name, $email]);
             
             if ($stmt->fetch()) {
-                $error = "Username or email already exists";
+                $error = "Email already exists";
             } else {
                 // Hash password with bcrypt
                 $hashed_password = password_hash($password, PASSWORD_BCRYPT);

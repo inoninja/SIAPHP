@@ -10,16 +10,16 @@ if (isset($_SESSION["user_id"])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username']);
+    $name = trim($_POST['username']);
     $password = $_POST['password'];
     
-    if (empty($username) || empty($password)) {
-        $error = "Username and password are required";
+    if (empty($name) || empty($password)) {
+        $error = "Email and password are required";
     } else {
         try {
             // Get user from database
             $stmt = $pdo->prepare("SELECT id, name, password FROM users WHERE name = ? OR email = ?");
-            $stmt->execute([$username, $username]);
+            $stmt->execute([$name, $name]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($user && password_verify($password, $user['password'])) {
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: homepage.php");
                 exit();
             } else {
-                $error = "Invalid username or password";
+                $error = "Invalid email or password";
             }
         } catch (PDOException $e) {
             $error = "Login failed: " . $e->getMessage();
