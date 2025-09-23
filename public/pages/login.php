@@ -1,7 +1,7 @@
 <?php
 //login.php
 session_start();
-require_once('../../database/db.php');
+require_once __DIR__ . '/../../database/db.php';
 
 // Redirect if already logged in
 if (isset($_SESSION["user_id"])) {
