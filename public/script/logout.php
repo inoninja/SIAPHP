@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../pages/login.php?google_logout=true");
+header("Location: ../pages/homepage/homepage.php?google_logout=true");
 exit();
 ?>
