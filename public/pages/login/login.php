@@ -62,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <div class="sign-in-header">
             <h2>Sign in</h2>
-            <p>Enter your details to sign in</p>
         </div>
 
         <?php if (isset($error)) echo "<p class='error-message'>$error</p>"; ?>
@@ -73,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="divider">or</div>
 
         <form method="POST" action="">
-            <input type="text" class="email-input" name="username" placeholder="Email" required>
+            <input type="text" class="email-input" name="username" placeholder="Username or Email" required>
             <input type="password" class="password-input" name="password" placeholder="Password" required>
             <button type="submit" class="btn-continue">Continue</button>
         </form>
