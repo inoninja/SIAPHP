@@ -29,6 +29,9 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Copy the rest of your application code into the container.
 COPY . .
 
+# Copy the rest of your application code into the container.
+COPY . .
+
 # Copy your custom Apache configuration to overwrite the default.
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
