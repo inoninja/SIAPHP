@@ -1,11 +1,11 @@
 <?php
 //login.php
 session_start();
-require_once __DIR__ . '/../../database/db.php';
+require_once __DIR__ . '/../../../database/db.php';
 
 // Redirect if already logged in
 if (isset($_SESSION["user_id"])) {
-    header("Location: homepage.php");
+    header("Location: ../homepage/homepage.php");
     exit();
 }
 
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["name"] = $user['name'];
                 
                 // Redirect to homepage
-                header("Location: homepage.php");
+                header("Location: ../homepage/homepage.php");
                 exit();
             } else {
                 $error = "Invalid email or password";
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     
-    <a href="index.html" class="back-link">← Back to Store</a>
+    <a href="../../index.php" class="back-link">← Back to Store</a>
 
     <div class="login-container">
         
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if (isset($error)) echo "<p class='error-message'>$error</p>"; ?>
         <?php if (isset($_GET['signup'])) echo "<p class='success-message'>Registration successful! Please login.</p>"; ?>
         
-        <a href="signup.php" class="btn-create-account">Create new account</a> 
+        <a href="../signup/signup.php" class="btn-create-account">Create new account</a> 
 
         <div class="divider">or</div>
 
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Send the ID token to your backend for verification
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = '../script/google_login.php'; // New backend endpoint
+        form.action = '../../script/google_login.php'; // Updated path
         const input = document.createElement('input');
         input.type = 'hidden';
         input.name = 'credential';

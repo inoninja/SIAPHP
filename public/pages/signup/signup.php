@@ -1,7 +1,7 @@
 <?php
 //signup.php
 session_start();
-require_once __DIR__ . '/../../database/db.php';
+require_once __DIR__ . '/../../../database/db.php';
 
 // Initialize name and email variables for sticky form
 $name = '';
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->execute([$name, $email, $hashed_password]);
                 
                 // Redirect to login with success message
-                header("Location: login.php?signup=success");
+                header("Location: ../login/login.php?signup=success");
                 exit();
             }
         } catch (PDOException $e) {
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     
-    <a href="index.html" class="back-link">← Back to Store</a>
+    <a href="../../index.php" class="back-link">← Back to Store</a>
     
     <div class="signup-container">
         
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="divider">or</div>
 
-        <a href="login.php" class="btn-alt-signin">Already have an account? Sign in</a>
+        <a href="../login/login.php" class="btn-alt-signin">Already have an account? Sign in</a>
 
         <div class="footer-links">
             <a href="/privacy-policy">Privacy policy</a>
