@@ -17,16 +17,18 @@ try {
 } catch (PDOException $e) {
     die("Error fetching user data: " . $e->getMessage());
 }
+
+// Set page title and CSS file
+$pageTitle = "Profile";
+$cssFile = "../homepage/homepage.css"; // Reuse the homepage CSS for consistency
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Profile</title>
-</head>
-<body>
-    <h1>Welcome, <?php echo htmlspecialchars($user['name']); ?>!</h1>
-    <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
-    <p>This is your profile page.</p>
-    <a href="../../script/logout.php">Logout</a>
-</body>
-</html>
+<?php require_once __DIR__ . '/../../components/header.php'; ?>
+
+    <div style="padding: 50px 20px; text-align: center;">
+        <h1>Welcome, <?php echo htmlspecialchars($user['name']); ?>!</h1>
+        <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+        <p>This is your profile page.</p>
+        <a href="../../script/logout.php" class="signup-btn">Logout</a>
+    </div>
+
+<?php require_once __DIR__ . '/../../components/footer.php'; ?>

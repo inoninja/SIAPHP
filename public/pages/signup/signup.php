@@ -4,8 +4,8 @@ session_start();
 require_once __DIR__ . '/../../../database/db.php';
 
 // Initialize name and email variables for sticky form
-$name = '';
-$email = '';
+ $name = '';
+ $email = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Input validation and sanitization
@@ -60,10 +60,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="signup.css">
+    <style>
+        /* Additional styles specifically for centering the Google button */
+        .google-signin-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .google-signin-wrapper > div {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     
-    <a href="../../index.php" class="back-link">← Back to Store</a>
+    <a href="../homepage/homepage.php" class="back-link">← Back to Store</a>
     
     <div class="signup-container">
         
@@ -93,6 +106,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="divider">or</div>
 
+        <!-- Google Sign-In Button -->
+        <div class="google-signin-wrapper">
+            <div id="g_id_onload"
+                data-client_id="687679280141-1c76j8an22qmklhvenser89qa09mr6fc.apps.googleusercontent.com"
+                data-callback="handleCredentialResponse"
+                data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                data-type="icon" 
+                data-size="large"
+                data-theme="outline"
+                data-text="signin_with" 
+                data-shape="rectangular"
+                data-logo_alignment="center"> 
+            </div>
+        </div>
+
         <a href="../login/login.php" class="btn-alt-signin">Already have an account? Sign in</a>
 
         <div class="footer-links">
@@ -102,5 +132,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
+    <script>
+    function handleCredentialResponse(response) {
+        // Send the ID token to your backend for verification
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../script/google_login.php'; // Backend endpoint for Google login
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'credential';
+        input.value = response.credential;
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    // Handle Google logout
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('google_logout')) {
+            if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
+                google.accounts.id.disableAutoSelect();
+            }
+        }
+    };
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>

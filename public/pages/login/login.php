@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     
-    <a href="../../index.php" class="back-link">← Back to Store</a>
+    <a href="../homepage/homepage.php" class="back-link">← Back to Store</a>
 
     <div class="login-container">
         
