@@ -28,7 +28,9 @@ $isLoggedIn = isset($_SESSION["user_id"]);
             <nav class="nav-left">
               <a href="/search" class="icon search-icon">🔍</a>
             </nav>
-            <div class="logo">MAISON MUGLER</div>
+            <a href="../homepage/homepage.php" class="logo-link">
+                <div class="logo">MAISON MUGLER</div>
+            </a>
             <div class="nav-right utility-icons">
                 <?php if ($isLoggedIn): ?>
                     <a href="../profile/profile.php" class="icon">👤</a>
