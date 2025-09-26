@@ -96,7 +96,6 @@ a {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
-    margin-bottom: 15px;
 }
 
 /* Submit Button (Primary CTA) */
@@ -189,4 +188,74 @@ a {
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+/* Additional styles specifically for centering the Google button */
+.google-signin-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.google-signin-wrapper > div {
+  display: flex;
+  justify-content: center;
+}
+
+/* STYLES FOR ALIGNMENT BELOW INPUT - CRITICAL CHANGES HERE */
+
+/* Wrapper to group the input and its direct feedback */
+.input-with-feedback {
+  /* Remove all vertical margins/padding here. We control the space below from the feedback div */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* The main form field style (Username) */
+.input-with-feedback .form-field {
+  /* IMPORTANT: Remove default form-field margin-bottom to let the feedback div control the spacing */
+  margin-bottom: 0 !important;
+  margin-top: 0; /* Ensure no unwanted margin-top */
+}
+
+/* Validation Feedback Div: Manages the space below the input */
+#username-feedback {
+  /* Align text to the left */
+  text-align: left;
+  font-size: 10px;
+  padding-left: 12px; /* Align with input's assumed left padding (from .form-field: 15px 12px) */
+  padding-top: 0;
+
+  /* CRITICAL: When empty, min-height creates the 15px gap. */
+  min-height: 15px;
+  margin-bottom: 0;
+}
+
+/* When the message is active, add vertical padding/margin to make the text readable */
+.feedback-wrong,
+.feedback-correct {
+  font-weight: 600;
+  min-height: 0; /* Allow height to be determined by content + padding */
+  padding-top: 5px; /* Space above message */
+  margin-bottom: 5px; /* Space below message */
+}
+
+.feedback-correct {
+  color: green;
+}
+.feedback-wrong {
+  color: red;
+}
+/* END STYLES */
+
+/* Ensure the email field starts flush against the username group */
+.signup-container form > input[type="email"].form-field {
+  margin-top: 0 !important;
+}
+
+/* Restore margin-top for all other fields if needed */
+.signup-container form > input.form-field:not(#full_name),
+.signup-container form > input[type="password"].form-field {
+    margin-top: 15px;
+  /* Assuming 15px is the intended margin between non-username fields */
 }

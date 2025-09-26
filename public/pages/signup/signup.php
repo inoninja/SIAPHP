@@ -8,190 +8,309 @@ $name = "";
 $email = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Input validation and sanitization
-  $name = trim($_POST["full_name"]); // Stays 'full_name' for compatibility
-  $email = trim($_POST["email"]);
-  $password = $_POST["password"];
-  $confirm_password = $_POST["confirm_password"];
+    // Input validation and sanitization
+    $name = trim($_POST["full_name"]); // Stays 'full_name' for compatibility
+    $email = trim($_POST["email"]);
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
 
-  // Validation checks
-  if (
-    empty($name) ||
-    empty($email) ||
-    empty($password) ||
-    empty($confirm_password)
-  ) {
-    $error = "All fields are required";
-  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $error = "Invalid email format";
-  } 
-    // NEW USERNAME FILTER START
+    // Server-side validation checks (remains the same)
+    $is_username_valid = true;
+
+    if (
+        empty($name) ||
+        empty($email) ||
+        empty($password) ||
+        empty($confirm_password)
+    ) {
+        $error = "All fields are required";
+        $is_username_valid = false;
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email format";
+        $is_username_valid = false;
+    } 
+    // SERVER-SIDE USERNAME RULES (MUST MATCH JS RULES)
     elseif (!preg_match('/^[a-zA-Z0-9_-]{3,20}$/', $name)) {
-        $error = "Username must be 3-20 characters long and can only contain letters, numbers, underscores, and hyphens.";
+        $is_username_valid = false;
+    } elseif (in_array(strtolower($name), ['admin', 'administrator', 'support', 'staff', 'test'])) {
+        $is_username_valid = false;
     }
-    // NEW USERNAME FILTER END
+    // END SERVER-SIDE USERNAME RULES
     elseif (strlen($password) < 8) {
-    $error = "Password must be at least 8 characters";
-  } elseif (
-    !preg_match("/[A-Z]/", $password) ||
-    !preg_match("/[0-9]/", $password)
-  ) {
-    $error =
-      "Password must contain at least one uppercase letter and one number";
-  } elseif ($password !== $confirm_password) {
-    $error = "Passwords do not match";
-  } else {
-    try {
-      // Check if email already exists (email is unique, names don't have to be)
-      $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
-      $stmt->execute([$email]);
+        $error = "Password must be at least 8 characters";
+    } elseif (
+        !preg_match("/[A-Z]/", $password) ||
+        !preg_match("/[0-9]/", $password)
+    ) {
+        $error =
+            "Password must contain at least one uppercase letter and one number";
+    } elseif ($password !== $confirm_password) {
+        $error = "Passwords do not match";
+    } else {
+        try {
+            // Check if email already exists (email is unique, names don't have to be)
+            $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+            $stmt->execute([$email]);
 
-      if ($stmt->fetch()) {
-        $error = "Email already exists";
-      } else {
-        // Hash password with bcrypt
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+            if ($stmt->fetch()) {
+                $error = "Email already exists";
+            } else {
+                // Hash password with bcrypt
+                $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        // Insert user with prepared statement
-        $stmt = $pdo->prepare(
-          "INSERT INTO users (name, email, password) VALUES (?, ?, ?)"
-        );
-        $stmt->execute([$name, $email, $hashed_password]);
+                // Insert user with prepared statement
+                $stmt = $pdo->prepare(
+                    "INSERT INTO users (name, email, password) VALUES (?, ?, ?)"
+                );
+                $stmt->execute([$name, $email, $hashed_password]);
 
-        // Redirect to login with success message
-        header("Location: ../login/login.php?signup=success");
-        exit();
-      }
-    } catch (PDOException $e) {
-      // Check for SQLSTATE[23505] - Unique violation error (PostgreSQL)
-      if ($e->getCode() == '23505') {
-        // Check which key caused the violation
-        $error_message = $e->getMessage();
-        if (strpos($error_message, 'users_name_key') !== false) {
-          $error = "The username **" . htmlspecialchars($name) . "** is already taken. Please choose another.";
-        } elseif (strpos($error_message, 'users_email_key') !== false) {
-          $error = "The email address **" . htmlspecialchars($email) . "** is already registered.";
-        } else {
-          // Fallback if a different unique key was violated
-          $error = "A conflict occurred during registration. It seems your username or email may already be in use.";
+                // Redirect to login with success message
+                header("Location: ../login/login.php?signup=success");
+                exit();
+            }
+        } catch (PDOException $e) {
+            // Check for SQLSTATE[23505] - Unique violation error (PostgreSQL)
+            if ($e->getCode() == '23505') {
+                // Check which key caused the violation
+                $error_message = $e->getMessage();
+                if (strpos($error_message, 'users_name_key') !== false) {
+                    $error = "The username **" . htmlspecialchars($name) . "** is already taken. Please choose another.";
+                } elseif (strpos($error_message, 'users_email_key') !== false) {
+                    $error = "The email address **" . htmlspecialchars($email) . "** is already registered.";
+                } else {
+                    // Fallback if a different unique key was violated
+                    $error = "A conflict occurred during registration. It seems your username or email may already be in use.";
+                }
+            } else {
+                // Generic error for other database issues
+                $error = "Registration failed: A database error occurred.";
+            }
         }
-      } else {
-        // Generic error for other database issues
-        $error = "Registration failed: A database error occurred.";
-      }
     }
-  }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAISON MUGLER - Sign Up</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="signup.css">
-  <style>
-    /* Additional styles specifically for centering the Google button */
-    .google-signin-wrapper {
-      display: flex;
-      justify-content: center;
-      margin: 15px 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAISON MUGLER - Sign Up</title>
     
-    .google-signin-wrapper > div {
-      display: flex;
-      justify-content: center;
-    }
-  </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="signup.css">
+    <style>
+        /* Additional styles specifically for centering the Google button */
+        .google-signin-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .google-signin-wrapper > div {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* STYLES FOR ALIGNMENT BELOW INPUT - CRITICAL CHANGES HERE */
+
+        /* Wrapper to group the input and its direct feedback */
+        .input-with-feedback {
+            /* Remove all vertical margins/padding here. We control the space below from the feedback div */
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        
+        /* The main form field style (Username) */
+        .input-with-feedback .form-field {
+            /* IMPORTANT: Remove default form-field margin-bottom to let the feedback div control the spacing */
+            margin-bottom: 0 !important; 
+            margin-top: 0; /* Ensure no unwanted margin-top */
+        }
+
+        /* Validation Feedback Div: Manages the space below the input */
+        #username-feedback {
+            /* Align text to the left */
+            text-align: left; 
+            font-size: 10px; 
+            padding-left: 12px; /* Align with input's assumed left padding (from .form-field: 15px 12px) */
+            padding-top: 0;
+            
+            /* CRITICAL: When empty, min-height creates the 15px gap. */
+            min-height: 15px; 
+            margin-bottom: 0; 
+        }
+
+        /* When the message is active, add vertical padding/margin to make the text readable */
+        .feedback-wrong, .feedback-correct {
+            font-weight: 600;
+            min-height: 0; /* Allow height to be determined by content + padding */
+            padding-top: 5px; /* Space above message */
+            margin-bottom: 5px; /* Space below message */
+        }
+        
+        .feedback-correct {
+            color: green;
+        }
+        .feedback-wrong {
+            color: red;
+        }
+        /* END STYLES */
+        
+        /* Ensure the email field starts flush against the username group */
+        .signup-container form > input[type="email"].form-field {
+             margin-top: 0 !important;
+        }
+        
+        /* Restore margin-top for all other fields if needed */
+        .signup-container form > input.form-field:not(#full_name),
+        .signup-container form > input[type="password"].form-field { /* Assuming 15px is the intended margin between non-username fields */
+        }
+        
+        /* The main CSS has a global .form-field margin-bottom: 15px, we need to ensure this is applied to the email and password fields. */
+        
+    </style>
 </head>
 <body>
-  
-  <a href="../homepage/homepage.php" class="back-link">← Back to Store</a>
-  
-  <div class="signup-container">
     
-    <div class="logo-small">MAISON MUGLER</div>
+    <a href="../homepage/homepage.php" class="back-link">← Back to Store</a>
     
-    <div class="signup-header">
-      <h2>Create Account</h2>
-      <p>Enter your details to get started</p>
-    </div>
-    
-    <?php // Display validation/database errors
-    if (isset($error)) {
-      echo "<p class='error-message'>$error</p>";
-    } ?>
-    
-    <form method="POST" action="">
-            <input type="text" class="form-field" name="full_name" placeholder="Username" value="<?php echo htmlspecialchars(
-        $name
-      ); ?>" required>
+    <div class="signup-container">
+        
+        <div class="logo-small">MAISON MUGLER</div>
+        
+        <div class="signup-header">
+            <h2>Create Account</h2>
+            <p>Enter your details to get started</p>
+        </div>
+        
+        <?php // Display validation/database errors
+        if (isset($error)) {
+            echo "<p class='error-message'>$error</p>";
+        } ?>
+        
+        <form method="POST" action="">
+            <div class="input-with-feedback">
+                <input type="text" class="form-field" id="full_name" name="full_name" placeholder="Username" 
+                   value="<?php echo htmlspecialchars($name); ?>" 
+                   onkeyup="validateUsername()" required>
+                
+                <div id="username-feedback"></div>
+            </div>
 
-      <input type="email" class="form-field" name="email" placeholder="Email Address" value="<?php echo htmlspecialchars(
-        $email
-      ); ?>" required>
+            <input type="email" class="form-field" name="email" placeholder="Email Address" value="<?php echo htmlspecialchars(
+                $email
+            ); ?>" required>
 
-      <input type="password" class="form-field" name="password" placeholder="Password" required>
+            <input type="password" class="form-field" name="password" placeholder="Password" required>
 
-      <input type="password" class="form-field" name="confirm_password" placeholder="Confirm Password" required>
+            <input type="password" class="form-field" name="confirm_password" placeholder="Confirm Password" required>
 
-      <button type="submit" class="btn-submit">Create Account</button>
-    </form>
+            <button type="submit" class="btn-submit">Create Account</button>
+        </form>
 
-    <div class="divider">or</div>
+        <div class="divider">or</div>
 
         <div class="google-signin-wrapper">
-      <div id="g_id_onload"
-        data-client_id="687679280141-1c76j8an22qmklhvenser89qa09mr6fc.apps.googleusercontent.com"
-        data-callback="handleCredentialResponse"
-        data-auto_prompt="false">
-      </div>
-      <div class="g_id_signin"
-        data-type="icon" 
-        data-size="large"
-        data-theme="outline"
-        data-text="signin_with" 
-        data-shape="rectangular"
-        data-logo_alignment="center"> 
-      </div>
+            <div id="g_id_onload"
+                data-client_id="687679280141-1c76j8an22qmklhvenser89qa09mr6fc.apps.googleusercontent.com"
+                data-callback="handleCredentialResponse"
+                data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                data-type="icon" 
+                data-size="large"
+                data-theme="outline"
+                data-text="signin_with" 
+                data-shape="rectangular"
+                data-logo_alignment="center"> 
+            </div>
+        </div>
+
+        <a href="../login/login.php" class="btn-alt-signin">Already have an account? Sign in</a>
+
+        <div class="footer-links">
+            <a href="/privacy-policy">Privacy policy</a>
+            <span style="color: #ccc;">•</span>
+            <a href="/terms-of-service">Terms of service</a>
+        </div>
     </div>
 
-    <a href="../login/login.php" class="btn-alt-signin">Already have an account? Sign in</a>
+    <script>
+    // UPDATED JAVASCRIPT VALIDATION FUNCTION for Single Sentence Feedback
+    function validateUsername() {
+        const username = document.getElementById('full_name').value.trim();
+        const feedbackDiv = document.getElementById('username-feedback');
+        const len = username.length;
+        let message = '';
+        let className = ''; // Start with no class (default height/margin)
+        
+        // Hide all feedback if the field is empty
+        if (len === 0) {
+            feedbackDiv.textContent = '';
+            feedbackDiv.className = '';
+            return;
+        }
 
-    <div class="footer-links">
-      <a href="/privacy-policy">Privacy policy</a>
-      <span style="color: #ccc;">•</span>
-      <a href="/terms-of-service">Terms of service</a>
-    </div>
-  </div>
+        // --- RULE 1: Length (3-20 characters) ---
+        const isLengthValid = len >= 3 && len <= 20;
+        if (!isLengthValid) {
+            message = "Length must be between 3 and 20 characters.";
+            className = 'feedback-wrong';
+        }
 
-  <script>
-  function handleCredentialResponse(response) {
-    // Send the ID token to your backend for verification
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '../../script/google_login.php'; // Backend endpoint for Google login
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'credential';
-    input.value = response.credential;
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
-  }
+        // --- RULE 2: Allowed Characters (letters, numbers, underscores, hyphens) ---
+        const isCharValid = /^[a-zA-Z0-9_-]*$/.test(username);
+        if (isLengthValid && !isCharValid) {
+            message = "Invalid characters. Use only letters, numbers, underscores, or hyphens.";
+            className = 'feedback-wrong';
+        }
 
-  // Handle Google logout
-  window.onload = function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('google_logout')) {
-      if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
-        google.accounts.id.disableAutoSelect();
-      }
+        // --- RULE 3: Reserved Words ---
+        const reservedNames = ['admin', 'administrator', 'support', 'staff', 'test'];
+        const isReservedValid = !reservedNames.includes(username.toLowerCase());
+        if (isLengthValid && isCharValid && !isReservedValid) {
+            message = "Username is reserved.";
+            className = 'feedback-wrong';
+        }
+
+        // If all rules pass
+        if (isLengthValid && isCharValid && isReservedValid) {
+             message = "Username looks good!"; 
+             className = 'feedback-correct';
+        }
+
+        // Apply message and class
+        feedbackDiv.textContent = message;
+        feedbackDiv.className = className;
     }
-  };
-  </script>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+    // END UPDATED JAVASCRIPT VALIDATION FUNCTION
+
+    function handleCredentialResponse(response) {
+        // Send the ID token to your backend for verification
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../../script/google_login.php'; // Backend endpoint for Google login
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'credential';
+        input.value = response.credential;
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    // Handle Google logout
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('google_logout')) {
+            if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
+                google.accounts.id.disableAutoSelect();
+            }
+        }
+        // Run validation on load if the field has sticky content
+        validateUsername();
+    };
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>
