@@ -1,13 +1,20 @@
 # Use the official PHP 8.2.12 image with the Apache web server
 FROM php:8.2.12-apache
 
-# Install system dependencies. `unzip` is often needed by Composer.
+# Install system dependencies.
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     unzip \
     curl \
     git \
+    gnupg2 \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
+
+# 🚀 CRITICAL FIX FOR NEON/SSL CONNECTIONS:
+# Install the common certificate authority bundle.
+# This fixes many "SSL handshake failed" or related connection errors.
+RUN update-ca-certificates
 
 # Install the PostgreSQL driver for PHP.
 RUN docker-php-ext-install pdo pdo_pgsql
@@ -21,13 +28,9 @@ RUN a2enmod rewrite
 # Set the working directory for the rest of the commands.
 WORKDIR /var/www/html
 
-# Copy composer files and install dependencies. This is done before
-# copying the rest of the app to take advantage of Docker's caching.
+# Copy composer files and install dependencies.
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Copy the rest of your application code into the container.
-COPY . .
 
 # Copy the rest of your application code into the container.
 COPY . .
