@@ -7,7 +7,6 @@ $port = DB_PORT;
 $dbname = DB_NAME;
 $user = DB_USER;
 $password = DB_PASS;
-$endpoint = DB_ENDPOINT;
 
 try {
     error_log("DB_HOST: " . $host);
