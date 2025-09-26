@@ -9,7 +9,7 @@ $email = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Input validation and sanitization
-  $name = trim($_POST["full_name"]);
+  $name = trim($_POST["full_name"]); // Stays 'full_name' for compatibility
   $email = trim($_POST["email"]);
   $password = $_POST["password"];
   $confirm_password = $_POST["confirm_password"];
@@ -24,7 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = "All fields are required";
   } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $error = "Invalid email format";
-  } elseif (strlen($password) < 8) {
+  } 
+    // NEW USERNAME FILTER START
+    elseif (!preg_match('/^[a-zA-Z0-9_-]{3,20}$/', $name)) {
+        $error = "Username must be 3-20 characters long and can only contain letters, numbers, underscores, and hyphens.";
+    }
+    // NEW USERNAME FILTER END
+    elseif (strlen($password) < 8) {
     $error = "Password must be at least 8 characters";
   } elseif (
     !preg_match("/[A-Z]/", $password) ||
@@ -57,13 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
       }
     } catch (PDOException $e) {
-      // MODIFIED CATCH BLOCK START
       // Check for SQLSTATE[23505] - Unique violation error (PostgreSQL)
       if ($e->getCode() == '23505') {
         // Check which key caused the violation
         $error_message = $e->getMessage();
         if (strpos($error_message, 'users_name_key') !== false) {
-          $error = "The username " . htmlspecialchars($name) . " is already taken.";
+          $error = "The username **" . htmlspecialchars($name) . "** is already taken. Please choose another.";
         } elseif (strpos($error_message, 'users_email_key') !== false) {
           $error = "The email address **" . htmlspecialchars($email) . "** is already registered.";
         } else {
@@ -74,7 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Generic error for other database issues
         $error = "Registration failed: A database error occurred.";
       }
-      // MODIFIED CATCH BLOCK END
     }
   }
 }
