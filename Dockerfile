@@ -29,9 +29,6 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Copy the rest of your application code into the container.
 COPY . .
 
-# Set proper permissions for Apache
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
 # Copy your custom Apache configuration to overwrite the default.
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
