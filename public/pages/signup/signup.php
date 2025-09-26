@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Send the ID token to your backend for verification
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = '../script/google_login.php'; // Backend endpoint for Google login
+        form.action = '../../script/google_login.php'; // Backend endpoint for Google login
         const input = document.createElement('input');
         input.type = 'hidden';
         input.name = 'credential';
