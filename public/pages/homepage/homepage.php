@@ -4,18 +4,10 @@ session_start();
 require_once __DIR__ . '/../../../database/db.php';
 
 // Check if user is logged in
-if (!isset($_SESSION["user_id"])) {
-    header("Location: ../login/login.php");
+if (isset($_SESSION["user_id"])) {
+    // If logged in, redirect to profile page
+    header("Location: ../profile/profile.php");
     exit();
-}
-
-// Get user info
-try {
-    $stmt = $pdo->prepare("SELECT name, email FROM users WHERE id = ?");
-    $stmt->execute([$_SESSION["user_id"]]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Error fetching user data: " . $e->getMessage());
 }
 ?>
 <!DOCTYPE html>
@@ -83,7 +75,6 @@ try {
             <p>Find the perfect fit, just for you.</p>
         </div>
     </div>
-
 
     <footer class="footer-main">
         <div class="container footer-grid">
