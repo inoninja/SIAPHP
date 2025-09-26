@@ -5,6 +5,8 @@ FROM php:8.2.12-apache
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     unzip \
+    curl \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the PostgreSQL driver for PHP.
@@ -12,9 +14,6 @@ RUN docker-php-ext-install pdo pdo_pgsql
 
 # Copy Composer from the official image.
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Copy your custom Apache configuration to overwrite the default.
-COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Enable Apache's rewrite module.
 RUN a2enmod rewrite
@@ -25,7 +24,13 @@ WORKDIR /var/www/html
 # Copy composer files and install dependencies. This is done before
 # copying the rest of the app to take advantage of Docker's caching.
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Copy the rest of your application code into the container.
 COPY . .
+
+# Copy your custom Apache configuration to overwrite the default.
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+# Configure Apache for your project
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
