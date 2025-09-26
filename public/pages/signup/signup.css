@@ -222,8 +222,7 @@ a {
 #username-feedback {
   /* Align text to the left */
   text-align: left;
-  font-size: 10px;
-  padding-left: 12px; /* Align with input's assumed left padding (from .form-field: 15px 12px) */
+  font-size: 12px;
   padding-top: 0;
 
   /* CRITICAL: When empty, min-height creates the 15px gap. */
@@ -237,7 +236,9 @@ a {
   font-weight: 600;
   min-height: 0; /* Allow height to be determined by content + padding */
   padding-top: 5px; /* Space above message */
-  margin-bottom: 5px; /* Space below message */
+  margin-bottom: 5px !important; /* Space below message */
+  text-align: left;
+  padding-left: 0 !important;
 }
 
 .feedback-correct {
