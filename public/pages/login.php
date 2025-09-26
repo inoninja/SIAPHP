@@ -43,34 +43,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAISON MUGLER - Sign In</title>
+    
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Login</h1>
-    <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
-    <?php if (isset($_GET['signup'])) echo "<p style='color:green'>Registration successful! Please login.</p>"; ?>
-    <form method="POST" action="">
-        Email: <input type="text" name="username" required><br>
-        Password: <input type="password" name="password" required><br>
-        <input type="submit" value="Login">
-    </form>
-    <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+    
+    <a href="index.html" class="back-link">← Back to Store</a>
 
-    <h2>Or sign in with Google</h2>
-    <div id="g_id_onload"
-         data-client_id="687679280141-1c76j8an22qmklhvenser89qa09mr6fc.apps.googleusercontent.com"
-         data-callback="handleCredentialResponse"
-         data-auto_prompt="false">
-    </div>
-    <div class="g_id_signin"
-         data-type="icon"
-         data-size="large"
-         data-theme="outline"
-         data-text="sign_in_with"
-         data-shape="rectangular"
-         data-logo_alignment="left">
+    <div class="login-container">
+        
+        <div class="logo-small">MAISON MUGLER</div>
+        
+        <div class="sign-in-header">
+            <h2>Sign in</h2>
+            <p>Enter your details to sign in</p>
+        </div>
+
+        <?php if (isset($error)) echo "<p class='error-message'>$error</p>"; ?>
+        <?php if (isset($_GET['signup'])) echo "<p class='success-message'>Registration successful! Please login.</p>"; ?>
+        
+        <a href="signup.php" class="btn-create-account">Create new account</a> 
+
+        <div class="divider">or</div>
+
+        <form method="POST" action="">
+            <input type="text" class="email-input" name="username" placeholder="Email" required>
+            <input type="password" class="password-input" name="password" placeholder="Password" required>
+            <button type="submit" class="btn-continue">Continue</button>
+        </form>
+        
+        <div class="divider">or</div>
+
+        <div id="g_id_onload"
+            data-client_id="687679280141-1c76j8an22qmklhvenser89qa09mr6fc.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+            data-type="icon" 
+            data-size="large"
+            data-theme="outline"
+            data-text="signin_with" 
+            data-shape="rectangular"
+            data-logo_alignment="center"> 
+        </div>
+
+        <div class="footer-links">
+            <a href="/privacy-policy">Privacy policy</a>
+            <span style="color: #ccc;">•</span>
+            <a href="/terms-of-service">Terms of service</a>
+        </div>
     </div>
 
     <script>
@@ -94,11 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (urlParams.has('google_logout')) {
             if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
                 google.accounts.id.disableAutoSelect();
-                // Optionally, you can also revoke the token if you want a full sign-out
-                // google.accounts.id.revoke(localStorage.getItem('google_id_token'), () => {
-                //     console.log('Google token revoked.');
-                // });
-                // localStorage.removeItem('google_id_token'); // Clear stored token if any
             }
         }
     };

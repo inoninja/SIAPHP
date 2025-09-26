@@ -1,0 +1,228 @@
+/* ------------------------------------------- */
+/* 1. Global & Utility Styles */
+/* ------------------------------------------- */
+:root {
+    --primary-font: 'Playfair Display', serif;
+    --secondary-font: 'Poppins', sans-serif;
+    --brand-dark: #1e1e1e;
+    --brand-gold: #c3b091;
+    --auth-accent: #5e47ff;
+    --background-light: #f7f7f7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--secondary-font);
+    color: var(--brand-dark);
+    background-color: var(--background-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- NEW: Back Link Style --- */
+.back-link {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--brand-dark);
+    padding: 10px 15px;
+}
+
+.back-link:hover {
+    opacity: 0.7;
+}
+/* ------------------------------------------- */
+
+
+/* ------------------------------------------- */
+/* 2. Login Form Container */
+/* ------------------------------------------- */
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.logo-small {
+    font-family: var(--primary-font);
+    font-size: 1.8em;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.sign-in-header {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.sign-in-header h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.sign-in-header p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* ------------------------------------------- */
+/* 3. Form Elements */
+/* ------------------------------------------- */
+
+/* The Create New Account Button (Styled Link) */
+.btn-create-account {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--auth-accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.btn-create-account:hover {
+    background-color: #4b34cc;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 25px 0;
+    color: #aaa;
+    font-size: 0.8em;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .5em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .5em;
+}
+
+/* Email and Continue Button */
+.email-input,
+.password-input {
+    width: 100%;
+    padding: 15px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.btn-continue {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--background-light);
+    color: #888;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-continue:hover {
+    background-color: #ebebeb;
+    color: var(--brand-dark);
+}
+
+/* Google Authentication */
+.btn-google {
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    color: var(--brand-dark);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-google:hover {
+    background-color: #f0f0f0;
+}
+
+/* Google G icon */
+.google-icon {
+    font-size: 1.2em;
+    margin-right: 8px;
+}
+
+.g_id_signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Footer Links */
+.footer-links {
+    margin-top: 30px;
+    font-size: 0.8em;
+}
+
+.footer-links a {
+    color: #666;
+    margin: 0 5px;
+}
+
+/* Messages */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success-message {
+    color: green;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    text-align: center;
+}
