@@ -2,12 +2,14 @@
 /* 1. Global & Utility Styles */
 /* ------------------------------------------- */
 :root {
-    --primary-font: 'Playfair Display', serif; /* Dandy Del Mar logo/headings style */
-    --secondary-font: 'Poppins', sans-serif; /* Body/navigation style */
-    --brand-dark: #1e1e1e; /* Main text/footer background */
-    --brand-accent: #8b0000; /* Red banner color */
-    --brand-gold: #c3b091; /* Subtle gold/beige accent for buttons/details */
+    --primary-font: 'Playfair Display', serif; 
+    --secondary-font: 'Poppins', sans-serif; 
+    --brand-dark: #1e1e1e; 
+    --brand-accent: #8b0000; 
+    --brand-gold: #c3b091; 
     --background-light: #ffffff;
+    --subtle-gray: #f4f4f4; 
+    --social-icon-color: #555555; 
 }
 
 * {
@@ -20,7 +22,7 @@ body {
     font-family: var(--secondary-font);
     color: var(--brand-dark);
     line-height: 1.6;
-    background-color: var(--background-light);
+    background-color: var(--subtle-gray);
 }
 
 a {
@@ -28,24 +30,20 @@ a {
     color: inherit;
 }
 
-/* Utility class for content width */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Icon Placeholders */
 .icon {
   font-size: 1.1em;
   display: inline-block;
 }
 
 /* ------------------------------------------- */
-/* 2. Header & Navigation */
+/* 2. Header & Navigation (From Index) */
 /* ------------------------------------------- */
-
-/* Top Red Banner */
 .promo-bar {
     background-color: var(--brand-accent);
     color: white;
@@ -57,15 +55,13 @@ a {
   margin: 0 15px;
 }
 
-/* Main Header */
 .header-main {
     padding: 15px 0;
     border-bottom: 1px solid #eee;
     background: white;
-    /* --- THESE LINES MAKE THE HEADER STICKY --- */
     position: sticky; 
     top: 0; 
-    z-index: 100; /* Ensures it stays above other content */
+    z-index: 100; 
 }
 .header-content {
     display: flex;
@@ -79,14 +75,13 @@ a {
   align-items: center;
 }
 
-/* Logo (The key design element) */
 .logo {
     font-family: var(--primary-font);
     font-size: 2.2em;
     letter-spacing: 2px;
     font-weight: 400;
     text-align: center;
-    flex: 2; /* Ensures logo stays centered */
+    flex: 2;
 }
 
 .nav-links a {
@@ -106,58 +101,55 @@ a {
 }
 .search-icon { margin-left: 0; }
 
-/* Sign Up Button */
-.signup-btn {
-    padding: 8px 16px;
-    background-color: var(--brand-accent);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.8em;
-    letter-spacing: 0.5px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.signup-btn:hover {
-    background-color: #6b0000; /* Darker shade of the brand accent color */
-}
-
 /* ------------------------------------------- */
-/* 3. Global Footer (Based on image_515644.png) */
+/* 4. Footer STYLES */
 /* ------------------------------------------- */
-
-/* Footer Main Content */
-.footer-main {
-    background: var(--brand-light); /* Lighter background than the very bottom bar */
-    padding: 60px 0;
+.feature-row { 
+    display: flex; justify-content: space-around; text-align: center; padding: 50px 0; border-top: 1px solid #eee; background: white;
 }
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr; /* Custom layout from the image */
-    gap: 50px;
+.feature-item { width: 30%; }
+.feature-item .icon { font-size: 2em; margin-bottom: 10px; }
+.feature-item p { font-size: 0.9em; color: #666; }
+
+.footer-main { 
+    background: var(--background-light); 
+    padding: 60px 0; 
+    border-top: 1px solid #eee; 
 }
 
-/* Newsletter Section */
+.footer-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 50px; 
+    padding-bottom: 60px; 
+}
+
 .newsletter-section {
-  padding-right: 50px;
+    padding-right: 50px;
 }
-.newsletter-section h2 {
-    font-family: var(--primary-font);
-    font-size: 2.2em;
-    margin-bottom: 20px;
+
+.newsletter-section .person-icon {
+    font-size: 2.5em; 
+    margin-bottom: 10px;
+    color: #7d7d7d; 
 }
+
+.newsletter-section h2 { 
+    font-family: var(--primary-font); 
+    font-size: 2.2em; 
+    font-weight: 400; 
+    margin-bottom: 25px; 
+    line-height: 1.1;
+}
+
 .newsletter-form {
     display: flex;
     align-items: center;
-    background: #e9e9e9;
+    background: #e9e9e9; 
     padding: 5px 10px;
     border-radius: 2px;
-    max-width: 350px;
+    max-width: 300px; 
+    margin-bottom: 25px;
 }
 .newsletter-form input {
     flex-grow: 1;
@@ -166,41 +158,45 @@ a {
     background: transparent;
     font-size: 1em;
     outline: none;
+    color: var(--brand-dark);
 }
 .newsletter-form button {
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 1.5em; /* Arrow icon placeholder */
+    font-size: 1.5em; 
     padding: 0 5px;
+    color: var(--brand-dark); 
 }
-.social-icons {
-    margin-top: 20px;
-}
+
 .social-icons a {
     margin-right: 20px;
-    font-size: 1.2em;
+    font-size: 1.5em; 
+    color: var(--social-icon-color); 
+    transition: color 0.2s;
+}
+.social-icons a:hover {
+    color: var(--brand-dark);
 }
 
-/* Footer Links Columns */
-.footer-links h3 {
-    font-size: 1em;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 20px;
+.footer-links h3 { 
+    font-size: 1em; 
+    text-transform: uppercase; 
+    font-weight: 600; 
+    margin-bottom: 20px; 
+    color: var(--brand-dark);
 }
-.footer-links a {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 0.9em;
-    color: #444;
+.footer-links a { 
+    display: block; 
+    margin-bottom: 10px; 
+    font-size: 0.9em; 
+    color: #444; 
 }
 
-/* Copyright Bar */
-.footer-bar {
-    background: var(--brand-dark);
-    color: white;
-    text-align: left;
-    padding: 15px 20px;
-    font-size: 0.75em;
+.footer-bar { 
+    background: var(--brand-dark); 
+    color: white; 
+    text-align: left; 
+    padding: 15px 20px; 
+    font-size: 0.75em; 
 }
