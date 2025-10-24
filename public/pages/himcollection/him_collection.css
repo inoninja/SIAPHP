@@ -1,0 +1,257 @@
+/* ------------------------------------------- */
+/* COLLECTION SPECIFIC STYLES                  */
+/* ------------------------------------------- */
+/* These styles will only apply to him_collection.php */
+
+.collection-hero {
+    background-color: white; 
+    text-align: left;
+    padding: 60px 0 0;
+    margin-bottom: 0;
+}
+.collection-hero h1 {
+    font-family: var(--primary-font);
+    font-size: 3.5em;
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding-left: 20px; /* Aligns with container padding */
+}
+
+.collection-content {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    padding-top: 50px;
+    min-height: 800px;
+    background-color: white; 
+}
+
+.sidebar-filters {
+    padding-top: 55px;
+    border-right: 1px solid #eee;
+    padding-right: 40px;
+    padding-left: 20px; /* Aligns with container padding */
+}
+
+.filter-toggle {
+    background-color: var(--brand-dark);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+.filter-toggle .icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    margin-right: 8px;
+}
+
+.filter-group {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+.filter-title {
+    font-family: var(--secondary-font);
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--brand-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; 
+    padding: 5px 0; 
+}
+.filter-title .icon {
+    font-size: 0.8em;
+    color: #666;
+    transition: transform 0.2s;
+}
+
+/* Filter options visibility and icon rotation */
+.filter-options {
+    padding-top: 0;
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.filter-group.active .filter-options {
+    max-height: 200px; 
+    padding-top: 10px;
+}
+
+.filter-group.active .filter-title .icon {
+    transform: rotate(180deg); 
+}
+
+/* Checkbox styling */
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #555;
+    cursor: pointer; 
+}
+
+.filter-option input[type="checkbox"] {
+    margin-right: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    transition: background-color 0.1s, border-color 0.1s;
+}
+
+.filter-option input[type="checkbox"]:checked {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+}
+
+.filter-option input[type="checkbox"]:checked::before {
+    content: '✓';
+    display: block;
+    color: white;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
+
+/* Product Filtering & Fade-in Styles */
+.product-card {
+    display: block;
+    text-align: left;
+    /* 1. Initial hidden state for fade-in effect */
+    opacity: 0; 
+    transform: translateY(10px);
+    /* 2. Transition for smooth visual "pop" */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out; 
+}
+
+/* State when hidden (uses display: none to remove from layout) */
+.product-card.hidden-by-filter {
+    display: none; 
+}
+
+/* State when visible (opacity and transform applied directly by JS after display: block) */
+.product-card.is-visible {
+     opacity: 1;
+     transform: translateY(0);
+}
+
+
+.product-listing {
+    padding-right: 20px; /* Aligns with container padding */
+}
+
+.top-bar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.horizontal-nav .nav-link {
+    font-size: 0.9em;
+    text-transform: capitalize; 
+    margin-right: 5px;
+    color: #666;
+}
+
+.sort-control {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+.sort-control label {
+    color: #666;
+    margin-right: 15px;
+}
+.sort-select {
+    background-color: var(--brand-dark); 
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 30px;
+    cursor: pointer;
+}
+.sort-select option {
+      background-color: white;
+      color: var(--brand-dark);
+      text-transform: none;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px 25px;
+    padding-bottom: 80px;
+}
+
+.product-card-image {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.product-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.product-card-image:hover img {
+    transform: scale(1.05);
+}
+.product-card h4 {
+    font-size: 1em;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.product-card .price-info {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+.product-card .sale-price {
+    color: var(--brand-accent); 
+    margin-left: 8px;
+}
+.product-card .original-price {
+    text-decoration: line-through;
+    color: #888;
+    font-weight: 400;
+}
+
+.sale-tag {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    background-color: var(--brand-accent);
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.75em;
+    font-weight: 600;
+}
