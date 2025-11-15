@@ -37,15 +37,15 @@ a {
 }
 
 .icon {
-  font-size: 1.1em;
-  display: inline-block;
+    font-size: 1.1em;
+    display: inline-block;
 }
 
 /* Small helper so icon anchors align */
 .icon-anchor {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Image icon styling */
@@ -63,7 +63,7 @@ a {
 }
 
 /* ------------------------------------------- */
-/* 2. Header & Navigation */
+/* 2. Header & Navigation (Styles used by the included header.php) */
 /* ------------------------------------------- */
 .promo-bar {
     background-color: var(--brand-accent);
@@ -73,7 +73,7 @@ a {
     font-size: 0.85em;
 }
 .promo-bar span {
-  margin: 0 15px;
+    margin: 0 15px;
 }
 
 .header-main {
@@ -91,9 +91,9 @@ a {
 }
 
 .nav-left, .nav-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .logo {
@@ -171,14 +171,16 @@ a {
 }
 
 .hero-cta {
-  margin-top: 40px;
-  text-align: right;
+    margin-top: 40px;
+    /* Align button to the left */
+    text-align: left; 
 }
 
 .hero-cta a {
     padding: 12px 30px;
     border: 2px solid white;
-    background-color: white;
+    /* Button is white with dark text to match visual reference */
+    background-color: white; 
     color: var(--brand-dark);
     text-transform: uppercase;
     font-weight: 600;
@@ -196,26 +198,26 @@ a {
 /* 4. Features Section */
 /* ------------------------------------------- */
 .feature-row {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  padding: 50px 0;
-  border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 50px 0;
+    border-top: 1px solid #eee;
 }
 .feature-item {
-  width: 30%;
+    width: 30%;
 }
 .feature-item .icon {
-  font-size: 2em;
-  margin-bottom: 10px;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 .feature-item p {
-  font-size: 0.9em;
-  color: #666;
+    font-size: 0.9em;
+    color: #666;
 }
 
 /* ------------------------------------------- */
-/* 5. Footer Section */
+/* 5. Footer Section (Styles used by the included footer.php) */
 /* ------------------------------------------- */
 .footer-main {
     background: #f9f9f9;
@@ -228,7 +230,7 @@ a {
 }
 
 .newsletter-section {
-  padding-right: 50px;
+    padding-right: 50px;
 }
 .newsletter-section h2 {
     font-family: var(--primary-font);
