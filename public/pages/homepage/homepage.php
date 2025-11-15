@@ -8,7 +8,7 @@ $pageTitle = "MAISON MUGLER - Homepage";
 $cssFile = "homepage.css"; // make sure header.php links this file from the same folder
 
 // include header (expects $pageTitle and $cssFile)
-// This file is assumed to contain the starting <html>, <head>, and <body> tags.
+// Assumed to contain the starting <html>, <head>, and navigation structure.
 require_once __DIR__ . '/../../components/header.php';
 ?>
 
@@ -54,6 +54,6 @@ require_once __DIR__ . '/../../components/header.php';
 
 <?php
 // include footer
-// This file is assumed to contain the closing </body> and </html> tags.
+// Assumed to contain the closing </body> and </html> tags.
 require_once __DIR__ . '/../../components/footer.php';
 ?>
