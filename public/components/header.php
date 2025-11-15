@@ -46,7 +46,7 @@ $displayName = $isLoggedIn && isset($_SESSION["name"]) ? htmlspecialchars($_SESS
       <a href="../him_collection/him_collection.php">Him</a>
       <a href="../her_collection/her_collection.php">Her</a>
       <a href="../newarrivals/newarrivals.php">New Arrivals</a>
-      <a href="/blog">About Us</a>
+      <a href="/about_us/about_us.php">About Us</a>
       <a href="/contact">Concierge</a>
     </nav>
   </header>
