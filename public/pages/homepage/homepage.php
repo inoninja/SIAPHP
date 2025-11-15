@@ -49,7 +49,7 @@ require_once __DIR__ . '/../../components/header.php';
     <section class="hero">
       <!-- video file should be placed at the same folder relative to this page: assets/videos/vid1.mp4 (or change path) -->
       <video autoplay muted loop playsinline class="hero-video" poster="assets/images/hero-poster.jpg">
-        <source src="vid1.mp4" type="video/mp4">
+        <source src="homepage/vid1.mp4" type="video/mp4">
         <!-- fallback: use background image via CSS from homepage.css -->
         Your browser does not support the video tag.
       </video>
