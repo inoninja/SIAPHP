@@ -14,7 +14,6 @@ $displayName = $isLoggedIn && isset($_SESSION["name"]) ? htmlspecialchars($_SESS
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../components/component.css">
-    <link rel="stylesheet" href="<?php echo isset($cssFile) ? $cssFile : '../homepage/homepage.css'; ?>">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
