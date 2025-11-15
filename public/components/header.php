@@ -28,7 +28,7 @@ $displayName = $isLoggedIn && isset($_SESSION["name"]) ? htmlspecialchars($_SESS
         <div class="container header-content">
             <nav class="nav-left">
                 <a href="/search" class="icon-anchor search-icon">
-                    <img src="../../assets/icons/search.png" alt="Search">
+                    <img src="../assets/icons/search.png" alt="Search">
                 </a>
             </nav>
             
@@ -40,13 +40,13 @@ $displayName = $isLoggedIn && isset($_SESSION["name"]) ? htmlspecialchars($_SESS
                 <?php if ($isLoggedIn): ?>
                     <a href="../profile/profile.php" class="username-display"><?php echo $displayName; ?></a>
                     <a href="../profile/profile.php" class="icon-anchor">
-                        <img src="../../assets/icons/profile.png" alt="Profile">
+                        <img src="../assets/icons/profile.png" alt="Profile">
                     </a>
                 <?php else: ?>
                     <a href="../signup/signup.php" class="signup-btn">Sign Up</a>
                 <?php endif; ?>
                 <a href="/cart" class="icon-anchor">
-                    <img src="../../assets/icons/cart.png" alt="Cart">
+                    <img src="../assets/icons/cart.png" alt="Cart">
                 </a>
             </div>
         </div>
