@@ -1,12 +1,14 @@
+/* homepage.css */
+
 /* ------------------------------------------- */
 /* 1. Global & Utility Styles */
 /* ------------------------------------------- */
 :root {
-    --primary-font: 'Playfair Display', serif; /* Dandy Del Mar logo/headings style */
-    --secondary-font: 'Poppins', sans-serif; /* Body/navigation style */
-    --brand-dark: #1e1e1e; /* Main text/footer background */
-    --brand-accent: #8b0000; /* Red banner color */
-    --brand-gold: #c3b091; /* Subtle gold/beige accent for buttons/details */
+    --primary-font: 'Playfair Display', serif;
+    --secondary-font: 'Poppins', sans-serif;
+    --brand-dark: #1e1e1e;
+    --brand-accent: #8b0000;
+    --brand-gold: #c3b091;
     --background-light: #ffffff;
 }
 
@@ -28,24 +30,41 @@ a {
     color: inherit;
 }
 
-/* Utility class for content width */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Icon Placeholders */
 .icon {
   font-size: 1.1em;
   display: inline-block;
 }
 
+/* Small helper so icon anchors align */
+.icon-anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image icon styling */
+.icon-anchor img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    filter: brightness(0);
+}
+.icon-anchor img:hover {
+    opacity: 0.7;
+    transform: translateY(-1px);
+}
+
 /* ------------------------------------------- */
 /* 2. Header & Navigation */
 /* ------------------------------------------- */
-
-/* Top Red Banner */
 .promo-bar {
     background-color: var(--brand-accent);
     color: white;
@@ -57,15 +76,13 @@ a {
   margin: 0 15px;
 }
 
-/* Main Header */
 .header-main {
     padding: 15px 0;
     border-bottom: 1px solid #eee;
     background: white;
-    /* --- THESE LINES MAKE THE HEADER STICKY --- */
-    position: sticky; 
-    top: 0; 
-    z-index: 100; /* Ensures it stays above other content */
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 .header-content {
     display: flex;
@@ -79,14 +96,13 @@ a {
   align-items: center;
 }
 
-/* Logo (The key design element) */
 .logo {
     font-family: var(--primary-font);
     font-size: 2.2em;
     letter-spacing: 2px;
     font-weight: 400;
     text-align: center;
-    flex: 2; /* Ensures logo stays centered */
+    flex: 2;
 }
 
 .nav-links a {
@@ -100,36 +116,50 @@ a {
 .utility-icons {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 .utility-icons a {
     margin-left: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .search-icon { margin-left: 0; }
 
 /* ------------------------------------------- */
-/* 3. Hero Section (Warehouse Sale Image) */
+/* 3. Hero Section with Background Video */
 /* ------------------------------------------- */
 .hero {
-    height: 90vh; /* Adjust height based on view */
-    background: url('hero-placeholder-sale.jpg') center center/cover no-repeat;
     position: relative;
+    height: 90vh;
+    overflow: hidden;
+    background-image: url('https://via.placeholder.com/1600x800/402927/ffffff?text=WELCOME+TO+THE+WAREHOUSE+SALE+IMAGE');
+    background-size: cover;
+    background-position: center;
 }
 
-.hero-overlay {
+.hero-video {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    /* Using a dark gradient or a slight color overlay to enhance text visibility */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.4) 100%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.4) 100%);
+    height: 100%;
     display: flex;
     align-items: center;
 }
 
 .hero-content {
     color: white;
-    margin-left: 5%; 
+    margin-left: 5%;
 }
 
 .hero-content h1 {
@@ -153,8 +183,9 @@ a {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
+
 .hero-cta a:hover {
     background-color: var(--brand-dark);
     color: white;
@@ -162,10 +193,8 @@ a {
 }
 
 /* ------------------------------------------- */
-/* 4. Global Footer (Based on image_515644.png) */
+/* 4. Features Section */
 /* ------------------------------------------- */
-
-/* Top features row */
 .feature-row {
   display: flex;
   justify-content: space-around;
@@ -185,18 +214,19 @@ a {
   color: #666;
 }
 
-/* Footer Main Content */
+/* ------------------------------------------- */
+/* 5. Footer Section */
+/* ------------------------------------------- */
 .footer-main {
-    background: var(--brand-light); /* Lighter background than the very bottom bar */
+    background: #f9f9f9;
     padding: 60px 0;
 }
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr; /* Custom layout from the image */
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 50px;
 }
 
-/* Newsletter Section */
 .newsletter-section {
   padding-right: 50px;
 }
@@ -225,7 +255,7 @@ a {
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 1.5em; /* Arrow icon placeholder */
+    font-size: 1.5em;
     padding: 0 5px;
 }
 .social-icons {
@@ -236,7 +266,6 @@ a {
     font-size: 1.2em;
 }
 
-/* Footer Links Columns */
 .footer-links h3 {
     font-size: 1em;
     text-transform: uppercase;
@@ -250,7 +279,6 @@ a {
     color: #444;
 }
 
-/* Copyright Bar */
 .footer-bar {
     background: var(--brand-dark);
     color: white;
@@ -259,23 +287,12 @@ a {
     font-size: 0.75em;
 }
 
-/* Sign Up Button */
-.signup-btn {
-    padding: 8px 16px;
-    background-color: var(--brand-accent);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.8em;
-    letter-spacing: 0.5px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.signup-btn:hover {
-    background-color: #6b0000; /* Darker shade of the brand accent color */
+/* Responsive tweaks for header icons (small screens) */
+@media (max-width: 720px) {
+    .hero-content h1 { font-size: 2.6em; }
+    .nav-links { display: none; }
+    .icon-anchor img { width: 20px; height: 20px; }
+    .feature-item { width: 100%; margin-bottom: 20px; }
+    .feature-row { flex-direction: column; padding: 30px 0; }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
 }
