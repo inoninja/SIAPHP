@@ -43,9 +43,9 @@ $displayName = $isLoggedIn && isset($_SESSION["name"]) ? htmlspecialchars($_SESS
       </div>
     </div>
     <nav class="nav-links container" style="text-align:center; padding-top: 15px;">
-      <a href="/collections/him">Him</a>
-      <a href="/collections/her">Her</a>
-      <a href="/sale">Warehouse Sale</a>
+      <a href="../him_collection/him_collection.php">Him</a>
+      <a href="../her_collection/her_collection.php">Her</a>
+      <a href="../newarrivals/newarrivals.php">Warehouse Collection</a>
       <a href="/blog">Institute of Leisure</a>
       <a href="/contact">Concierge</a>
     </nav>

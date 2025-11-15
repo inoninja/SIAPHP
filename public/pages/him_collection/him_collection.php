@@ -18,31 +18,6 @@ require_once __DIR__ . '/../../components/header.php';
         <span class="icon">←</span> Free shipping on all over the Philippines <span class="icon">→</span>
     </div>
 
-    <header class="header-main">
-        <div class="container header-content">
-            <nav class="nav-left">
-              <a href="/search" class="icon-anchor search-icon" aria-label="Search">
-                <img src="/assets/icons/search.png" alt="Search icon">
-              </a>
-            </nav>
-            <a href="homepage.php" class="logo">MAISON MUGLER</a>
-            <div class="nav-right utility-icons">
-                <a href="login.php" class="icon-anchor" aria-label="Profile">
-                  <img src="/assets/icons/profile.png" alt="Profile icon">
-                </a>
-                <a href="/cart" class="icon-anchor" aria-label="Cart">
-                  <img src="/assets/icons/cart.png" alt="Cart icon">
-                </a>
-            </div>
-        </div>
-        <nav class="nav-links container" style="text-align:center; padding-top: 15px;">
-        <a href="him_collection.php" class="active">Him</a>
-        <a href="her_collection.php">Her</a>
-        <a href="newarrivals.php">New Arrivals</a>
-        <a href="about_us.php">About Us</a>
-        <a href="concierge.php">Concierge</a>
-        </nav>
-    </header>
     <section class="collection-hero">
         <div class="container">
             <h1>MEN'S APPAREL</h1>
@@ -121,46 +96,6 @@ require_once __DIR__ . '/../../components/header.php';
         </section>
     </main>
 
-    <footer class="footer-main">
-        <div class="container footer-grid">
-            
-            <div class="newsletter-section">
-                <div class="icon person-icon">👤</div>
-                <h2>JOIN THE LEISURE LETTER</h2>
-                <form class="newsletter-form" action="/subscribe.php" method="post">
-                    <input name="email" type="email" placeholder="Enter your email" required>
-                    <button type="submit">→ </button>
-                </form>
-                <div class="social-icons">
-                    <a href="#">✉️</a> 
-                    <a href="#">▶️</a> 
-                    <a href="#">🎵</a> 
-                    <a href="#">📌</a> 
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <h3>SHOP</h3>
-                <a href="him_collection.php">Him</a>
-                <a href="her_collection.php">Her</a>
-                <a href="/collections/new">New Arrivals</a>
-                <a href="/sale">Now Departing</a>
-                <a href="/blog">Institute of Leisure</a>
-                <a href="/contact">Concierge</a>
-            </div>
-
-            <div class="footer-links">
-                <h3>INFORMATION</h3>
-                <a href="/shipping">Shipping Policy</a>
-                <a href="/returns">Return Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/contact">Contact</a>
-                <a href="/gifts">Gift Cards</a>
-                <a href="/accessibility">Click for Accessibility</a>
-            </div>
-        </div>
-    </footer>
 
     <div class="footer-bar">
       <div class="container">
