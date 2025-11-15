@@ -11,10 +11,6 @@ $cssFile = "homepage.css"; // make sure header.php links this file from the same
 require_once __DIR__ . '/../../components/header.php';
 ?>
 
-    <div class="promo-bar">
-        <span class="icon">←</span> Free shipping on all over the Philippines <span class="icon">→</span>
-    </div>
-
     <!-- Hero Section with Background Video -->
     <section class="hero">
       <!-- video file should be placed at the same folder relative to this page: assets/videos/vid1.mp4 (or change path) -->
@@ -56,12 +52,6 @@ require_once __DIR__ . '/../../components/header.php';
             <h4>FREE EXCHANGES, EASY RETURNS</h4>
             <p>Find the perfect fit, just for you.</p>
         </div>
-    </div>
-
-    <div class="footer-bar">
-      <div class="container">
-        © <?php echo date("Y"); ?> MAISON MUGLER.
-      </div>
     </div>
 
 <?php

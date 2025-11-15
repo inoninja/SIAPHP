@@ -9,8 +9,6 @@ $cssFile = "newarrivals.css"; // make sure header.php uses this variable to incl
 require_once __DIR__ . '/../../components/header.php';
 ?>
 
-<div class="promo-bar"><span class="icon">←</span> Free shipping all over the Philippines <span class="icon">→</span></div>
-
 <section class="hero" role="img" aria-label="New arrivals landing image">
   <div class="hero-content">
     <h1>NEW ARRIVALS</h1>
@@ -38,8 +36,6 @@ require_once __DIR__ . '/../../components/header.php';
     </div>
   </div>
 </section>
-
-<div class="footer-bar">© <?php echo date("Y"); ?> MAISON MUGLER.</div>
 
 <?php
 require_once __DIR__ . '/../../components/footer.php';

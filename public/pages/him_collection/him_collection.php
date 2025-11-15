@@ -14,10 +14,6 @@ $cssFile = "him_collection.css"; // The CSS file for this page
 require_once __DIR__ . '/../../components/header.php';
 ?>
 
-    <div class="promo-bar">
-        <span class="icon">←</span> Free shipping on all over the Philippines <span class="icon">→</span>
-    </div>
-
     <section class="collection-hero">
         <div class="container">
             <h1>MEN'S APPAREL</h1>
@@ -96,12 +92,6 @@ require_once __DIR__ . '/../../components/header.php';
         </section>
     </main>
 
-
-    <div class="footer-bar">
-      <div class="container">
-        © <?php echo date("Y"); ?> MAISON MUGLER.
-      </div>
-    </div>
     <?php
 // include footer (closes body/html)
 require_once __DIR__ . '/../../components/footer.php';
