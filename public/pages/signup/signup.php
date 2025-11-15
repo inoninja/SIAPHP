@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="google-signin-wrapper">
             <div id="g_id_onload"
-                data-client_id="687679280141-1c76j8an22qmklhvenser89qa09mr6fc.apps.googleusercontent.com"
+                data-client_id="690985522293-1al91abqjeamhgsq817v3sh10p1h1enr.apps.googleusercontent.com"
                 data-callback="handleCredentialResponse"
                 data-auto_prompt="false">
             </div>
