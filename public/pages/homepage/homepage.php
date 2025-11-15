@@ -3,14 +3,133 @@
 session_start();
 require_once __DIR__ . '/../../../database/db.php';
 
-// Page title and CSS file (header.php should use these)
+// Page title
 $pageTitle = "MAISON MUGLER - Homepage";
-$cssFile = "homepage.css"; // make sure header.php links this file from the same folder
 
-// include header (expects $pageTitle and $cssFile)
-// Assumed to contain the starting <html>, <head>, and navigation structure.
+// include header (even if CSS is inline, header.php likely includes nav + structure)
 require_once __DIR__ . '/../../components/header.php';
 ?>
+
+<style>
+/* -----------------------------------
+   BASE + GLOBAL
+----------------------------------- */
+:root {
+    --primary-font: "Playfair Display", serif;
+    --secondary-font: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--secondary-font);
+    background-color: #ffffff;
+}
+
+/* -----------------------------------
+   HERO SECTION
+----------------------------------- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero-content h1 {
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+.hero-cta a {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 30px;
+    background: #ffffff;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.hero-cta a:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* -----------------------------------
+   FEATURE ROW
+----------------------------------- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.feature-row {
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.feature-item {
+    width: 30%;
+}
+
+.feature-item .icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.feature-item h4 {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: var(--secondary-font);
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* -----------------------------------
+   PLACEHOLDER SECTION
+----------------------------------- */
+.collections-placeholder h2 {
+    font-size: 1.8rem;
+}
+
+</style>
 
 <section class="hero">
     <video autoplay muted loop playsinline class="hero-video" poster="assets/images/hero-poster.jpg">
@@ -53,7 +172,5 @@ require_once __DIR__ . '/../../components/header.php';
 </div>
 
 <?php
-// include footer
-// Assumed to contain the closing </body> and </html> tags.
 require_once __DIR__ . '/../../components/footer.php';
 ?>
