@@ -39,7 +39,7 @@ require_once __DIR__ . '/../../components/header.php';
         <nav class="nav-links container" style="text-align:center; padding-top: 15px;">
             <a href="him_collection.php">Him</a>
             <a href="her_collection.php">Her</a>
-            <a href="new_arrivals.php">New Arrivals</a>
+            <a href="newarrivals.php">New Arrivals</a>
             <a href="about_us.php">About Us</a>
             <a href="concierge.php">Concierge</a>
         </nav>
