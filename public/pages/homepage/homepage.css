@@ -112,7 +112,8 @@ a {
 
 /* Container for the video, set height and position context */
 .hero-video {
-    min-height: 90vh; /* Adjusted to use min-height for flexible content */
+    /* MAXIMIZED HEIGHT: This makes the video section take up the entire viewport height. */
+    min-height: 100vh; 
     position: relative;
     overflow: hidden; /* Important to clip the video edges */
 }
@@ -353,7 +354,8 @@ a {
 }
 
 #chatbot-box.open {
-    transform: translateY(-70px) scale(1); /* Adjust translateY for button height + margin */
+    /* Adjusted translateY slightly to ensure it's still positioned correctly when open */
+    transform: translateY(-70px) scale(1); 
     opacity: 1;
 }
 
