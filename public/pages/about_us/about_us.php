@@ -27,7 +27,7 @@ require_once __DIR__ . '/../../components/header.php';
     <h2>Who We Are</h2>
     <p>Founded in 2018, Maison Mugler was created out of a desire to slow down, travel often, and appreciate life’s finest details. Inspired by coastal leisure and timeless style, we craft apparel and accessories designed for refined relaxation — made for the jet-setter, the weekend wanderer, and those who live for the sea breeze.</p>
 
-    <img class="about-image" src="assets/au1.png" alt="Lifestyle image">
+    <img class="about-image" src="au1.png" alt="Lifestyle image">
 
     <h2>Our Philosophy</h2>
     <p>We believe leisure is an art form — one that balances elegance, confidence, and comfort. Every collection embodies sophistication while honoring simplicity, designed to take you seamlessly from sunrise swims to late-night dinners by the coast.</p>
