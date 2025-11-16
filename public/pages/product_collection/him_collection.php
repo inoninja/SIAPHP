@@ -9,14 +9,14 @@ require_once __DIR__ . '/../../components/header.php';
     <title><?php echo $page_title; ?></title>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="collection.css">
+    <link rel="stylesheet" href="him_collection.css">
 </head>
 <body>
 
     <main>
-        <section class="collection-hero him-hero">             <div class="container">
+        <section class="collection-hero">
+            <div class="container">
                 <h1>MEN'S APPAREL</h1>
-                <p>A curated selection of our finest garments for the modern man.</p>
             </div>
         </section>
 
@@ -60,7 +60,7 @@ require_once __DIR__ . '/../../components/header.php';
                         <div class="product-card-image">
                             <img src="him_collection_assets/MEN2.png" alt="Emerald Robe">
                         </div>
-                        <h4>The Hotel Robe - Emerald is a very long name for an item</h4>
+                        <h4>The Hotel Robe - Emerald</h4>
                         <p class="price-info">$189.00</p>
                     </a>
                     <a href="#" class="product-card">
@@ -94,6 +94,7 @@ require_once __DIR__ . '/../../components/header.php';
                             <img src="him_collection_assets/MEN6.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
                     </a>
                 </div>
 
@@ -104,18 +105,21 @@ require_once __DIR__ . '/../../components/header.php';
                             <img src="him_collection_assets/MEN7.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
                     </a>
                     <a href="#" class="product-card">
                         <div class="product-card-image">
                             <img src="him_collection_assets/MEN8.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
                     </a>
                     <a href="#" class="product-card">
                         <div class="product-card-image">
                             <img src="him_collection_assets/MEN9.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
                     </a>
                 </div>
             </section>
