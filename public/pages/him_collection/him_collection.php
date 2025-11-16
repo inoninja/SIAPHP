@@ -20,18 +20,12 @@ require_once __DIR__ . '/../../components/header.php';
             </div>
         </section>
 
-        <section class="collection-content container">
-            <aside class="sidebar-filters">
-                <div class="filter-group"><h4 class="filter-title">Material <span class="icon">⌄</span></h4></div>
-                <div class="filter-group"><h4 class="filter-title">Category <span class="icon">⌄</span></h4></div>
-            </aside>
-
             <section class="product-listing">
                 <div class="top-bar-controls">
                     <nav class="horizontal-nav">
                         <a href="#" class="nav-link">New Arrivals</a> /
                         <a href="#" class="nav-link">Shirts and Tops</a> /
-                        <a href="#" class="nav-link">Pants and Shorts</a> /
+                        <a href="#" class="nav-link">Pants and Shorts</a> 
                     </nav>
                     <div class="sort-control">
                         <label for="sort-by">Sort by:</label>
@@ -42,13 +36,14 @@ require_once __DIR__ . '/../../components/header.php';
                         </select>
                     </div>
                 </div>
+                <h2 style="font-family:var(--primary-font); margin-bottom:20px;">New Arrivals</h2>
                 <div class="product-grid">
                     <a href="product-the-dominica.php" class="product-card">
                         <div class="product-card-image">
                             <img src="him_collection_assets/men1.png" alt="Long Sleeve Polo">
                         </div>
-                        <h4>The Leisure Knit Polo</h4>
-                        <p class="price-info">$149.00</p>
+                        <h4>The Leisure Polo</h4>
+                        <p class="price-info">₱ 1,500.00</p>
                     </a>
                     <a href="#" class="product-card">
                         <div class="product-card-image">
@@ -66,6 +61,42 @@ require_once __DIR__ . '/../../components/header.php';
                         <p class="price-info"><span class="original-price">$169.00</span> <span class="sale-price">$143.00</span></p>
                     </a>
                     <a href="#" class="product-card">
+                        <h2 style="font-family:var(--primary-font); margin-bottom:20px;">Shirt and Tops</h2>
+                        <div class="product-card-image">
+                            <img src="https://via.placeholder.com/300x400/ede8e3/52433f?text=Cream+Knit+Polo" alt="Cream Knit Polo">
+                        </div>
+                        <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
+                    </a>
+                        <a href="#" class="product-card">
+                        <div class="product-card-image">
+                            <img src="https://via.placeholder.com/300x400/ede8e3/52433f?text=Cream+Knit+Polo" alt="Cream Knit Polo">
+                        </div>
+                        <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
+                    </a>
+                        <a href="#" class="product-card">
+                        <div class="product-card-image">
+                            <img src="https://via.placeholder.com/300x400/ede8e3/52433f?text=Cream+Knit+Polo" alt="Cream Knit Polo">
+                        </div>
+                        <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
+                                            <a href="#" class="product-card">
+                        <h2 style="font-family:var(--primary-font); margin-bottom:20px;">Pants and Shorts</h2>
+                        <div class="product-card-image">
+                            <img src="https://via.placeholder.com/300x400/ede8e3/52433f?text=Cream+Knit+Polo" alt="Cream Knit Polo">
+                        </div>
+                        <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
+                    </a>
+                        <a href="#" class="product-card">
+                        <div class="product-card-image">
+                            <img src="https://via.placeholder.com/300x400/ede8e3/52433f?text=Cream+Knit+Polo" alt="Cream Knit Polo">
+                        </div>
+                        <h4>The Riviera Knit Sweater</h4>
+                        <p class="price-info">$175.00</p>
+                    </a>
+                        <a href="#" class="product-card">
                         <div class="product-card-image">
                             <img src="https://via.placeholder.com/300x400/ede8e3/52433f?text=Cream+Knit+Polo" alt="Cream Knit Polo">
                         </div>
@@ -74,7 +105,6 @@ require_once __DIR__ . '/../../components/header.php';
                     </a>
                 </div>
             </section>
-        </section>
     </main>
     
     <script>
