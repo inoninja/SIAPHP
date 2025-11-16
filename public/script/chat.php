@@ -1,5 +1,4 @@
 <?php
-// api/chat.php
 
 session_start();
 
@@ -32,16 +31,13 @@ $systemInstruction = "You are the 'Mugler Sale Assistant' for an e-commerce stor
 $prompt = $systemInstruction . "User's Question: " . $userMessage;
 
 $requestBody = [
-    // CRITICAL FIX: Removed the generationConfig block entirely 
-    // since system_instruction is not supported for single-turn REST call.
     'generationConfig' => [
-        'temperature' => 0.7, // Keep temperature here if needed
+        'temperature' => 0.7,
     ],
     'contents' => [
         [
             'role' => 'user',
             'parts' => [
-                // Pass the combined instruction and message here
                 ['text' => $prompt] 
             ],
         ],
