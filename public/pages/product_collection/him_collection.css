@@ -1,14 +1,13 @@
-/* All CSS from the original request, structured for clarity */
 :root {
-    --primary-font: 'Playfair Display', serif; 
-    --secondary-font: 'Poppins', sans-serif; 
-    --brand-dark: #1e1e1e; 
-    --brand-accent: #8b0000; 
-    --brand-gold: #c3b091; 
-    --background-light: #ffffff;
-    --subtle-gray: #f4f4f4; 
-    --social-icon-color: #555555;
-    --muted: #666;
+    --primary-font: 'Playfair Display', serif; 
+    --secondary-font: 'Poppins', sans-serif; 
+    --brand-dark: #1e1e1e; 
+    --brand-accent: #8b0000; 
+    --brand-gold: #c3b091; 
+    --background-light: #ffffff;
+    --subtle-gray: #f4f4f4; 
+    --social-icon-color: #555555;
+    --muted: #666;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,42 +35,42 @@ a { text-decoration: none; color: inherit; }
 
 /* Collection Styles (UPDATED FOR BACKGROUND IMAGE) */
 .collection-hero { 
-    background-color: #d1b4a8; /* Fallback color */
-    background-image: url('him_collection_assets/hero_men_bg.jpg'); /* NOTE: Update this path to your actual image! */
-    background-size: cover; 
-    background-position: center top; 
-    background-repeat: no-repeat;
-    min-height: 400px;
-    
-    text-align: left; 
-    padding: 100px 0; 
-    margin-bottom: 0;
-    position: relative;
+    background-color: #d1b4a8; /* Fallback color */
+    background-image: url('him_collection_assets/hero_men_bg.jpg'); /* NOTE: Update this path to your actual image! */
+    background-size: cover; 
+    background-position: center top; 
+    background-repeat: no-repeat;
+    min-height: 400px;
+    
+    text-align: left; 
+    padding: 100px 0; 
+    margin-bottom: 0;
+    position: relative;
 }
 
 /* Optional Overlay for better text contrast */
 .collection-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); 
-    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); 
+    z-index: 1;
 }
 
 .collection-hero h1 { 
-    font-family: var(--primary-font); 
-    font-size: 4.5em; /* Larger text for hero */
-    font-weight: 400; 
-    margin-bottom: 10px; 
-    padding-left: 20px; 
-    
-    color: white; /* White text for visibility */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); 
-    position: relative; 
-    z-index: 2;
+    font-family: var(--primary-font); 
+    font-size: 4.5em; /* Larger text for hero */
+    font-weight: 400; 
+    margin-bottom: 10px; 
+    padding-left: 20px; 
+    
+    color: white; /* White text for visibility */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); 
+    position: relative; 
+    z-index: 2;
 }
 
 .collection-content { display: grid; grid-template-columns: 250px 1fr; gap: 40px; padding-top: 50px; min-height: 800px; background-color: white; }
@@ -86,46 +85,46 @@ a { text-decoration: none; color: inherit; }
 
 /* Product Grid and Card Styles */
 .product-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 40px 25px; 
-    padding-bottom: 80px; 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px 25px; 
+    padding-bottom: 80px; 
 }
 
 .product-card { display: block; text-align: left; }
 
 .product-card-image { 
-    position: relative; 
-    overflow: hidden; 
-    margin-bottom: 15px; 
-    
-    width: 100%; 
-    padding-top: 100%; /* Creates a perfect square based on the column width */
-    height: 0; /* Collapse height to use padding for sizing */
+    position: relative; 
+    overflow: hidden; 
+    margin-bottom: 15px; 
+    
+    width: 100%; 
+    padding-top: 100%; /* Creates a perfect square based on the column width */
+    height: 0; /* Collapse height to use padding for sizing */
 }
 
 .product-card-image img { 
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%;
-    object-fit: cover; 
-    
-    display: block; 
-    transition: transform 0.3s ease; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    
+    display: block; 
+    transition: transform 0.3s ease; 
 }
 
 .product-card-image:hover img { transform: scale(1.05); }
 
 /* FIX: Set a fixed minimum height for consistent title/price alignment (2 lines of text) */
 .product-card h4 { 
-    font-size: 1em; 
-    font-weight: 400; 
-    margin-bottom: 5px;
-    min-height: 2.8em; 
-    line-height: 1.4;
-    overflow: hidden;
+    font-size: 1em; 
+    font-weight: 400; 
+    margin-bottom: 5px;
+    min-height: 2.8em; 
+    line-height: 1.4;
+    overflow: hidden;
 }
 
 .product-card .price-info { font-size: 0.9em; font-weight: 600; }
@@ -146,12 +145,12 @@ a { text-decoration: none; color: inherit; }
 .footer-bar { background: var(--brand-dark); color: white; text-align: left; padding: 15px 20px; font-size: 0.75em; }
 
 @media (max-width: 720px) {
-    .collection-hero {
-        min-height: 300px;
-    }
-    .collection-hero h1 { font-size: 2.8em; }
-    .nav-links { display: none; }
-    .icon-anchor img { width: 20px; height: 20px; filter: none; } 
-    .collection-content { grid-template-columns: 1fr; padding-top: 30px; min-height: auto; }
-    .sidebar-filters { border-right: none; padding-right: 0; padding-left: 0; }
+    .collection-hero {
+        min-height: 300px;
+    }
+    .collection-hero h1 { font-size: 2.8em; }
+    .nav-links { display: none; }
+    .icon-anchor img { width: 20px; height: 20px; filter: none; } 
+    .collection-content { grid-template-columns: 1fr; padding-top: 30px; min-height: auto; }
+    .sidebar-filters { border-right: none; padding-right: 0; padding-left: 0; }
 }
