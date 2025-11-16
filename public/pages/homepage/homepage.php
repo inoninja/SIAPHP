@@ -66,25 +66,26 @@ $cssFile = "homepage.css";
         const button = document.getElementById('chatbot-button');
         const box = document.getElementById('chatbot-box');
         
-        // Hide the button and show the box, or vice versa
+        // Toggle the 'open' class
+        box.classList.toggle('open');
+        
+        // Hide the button when the box is open, show it when closed
         if (box.classList.contains('open')) {
-            box.classList.remove('open');
-            button.style.display = 'flex'; // Show button when closing box
-        } else {
-            box.classList.add('open');
             button.style.display = 'none'; // Hide button when opening box
             // Scroll to bottom of chat history when opening
             document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
             document.getElementById('user-input').focus();
+        } else {
+            button.style.display = 'flex'; // Show button when closing box
         }
     }
 
     // --- CHATBOT KNOWLEDGE BASE (THE BRAIN) ---
     const chatbotResponses = {
         "hello|hi|hey": "Hello there! I'm here to help you with the sale.",
-        "sale|discount|labor day": "Our Warehouse Sale offers 30% off, plus buy two, get one free on all shorts!",
+        "sale|discount|labor day": "Our Warehouse Sale offers **30% off**, plus **buy two, get one free on all shorts**!",
         "shipping|delivery|free shipping": "We offer fast and free shipping on all orders of $150 or more.",
-        "return|exchange": "Yes! We offer free exchanges and easy returns to help you find the perfect fit.",
+        "return|exchange": "Yes! We offer **free exchanges** and **easy returns** to help you find the perfect fit.",
         "thank|thanks|bye": "You're welcome! Have a great time shopping!",
         "default": "I'm a simple assistant. Try asking about the sale, shipping, or returns."
     };
