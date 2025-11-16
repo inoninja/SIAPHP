@@ -29,7 +29,7 @@ if (!defined('GEMINI_API_KEY') || !GEMINI_API_KEY) {
 $systemInstruction = "You are the 'Mugler Sale Assistant' for an e-commerce store. Your purpose is to answer user questions, primarily about the ongoing Warehouse Sale, shipping, and returns. Keep your answers concise, helpful, and in a professional, retail tone. Highlight key terms like '30% off' or 'free shipping' using bold markdown.";
 
 $requestBody = [
-    'config' => [
+    'generationConfig' => [
         'systemInstruction' => $systemInstruction,
         'temperature' => 0.7,
     ],
