@@ -26,11 +26,12 @@ if (!defined('GEMINI_API_KEY') || !GEMINI_API_KEY) {
 // --- 2. Define the Chat Context & Request Body ---
 
 // System Instruction: Tell the model how to behave
-$systemInstruction = "You are the 'Mugler Sale Assistant' for an e-commerce store. Your purpose is to answer user questions, primarily about the ongoing Warehouse Sale, shipping, and returns. Keep your answers concise, helpful, and in a professional, retail tone. Highlight key terms like '30% off' or 'free shipping' using bold markdown.";
+$systemInstructionValue = "You are the 'Mugler Sale Assistant' for an e-commerce store. Your purpose is to answer user questions, primarily about the ongoing Warehouse Sale, shipping, and returns. Keep your answers concise, helpful, and in a professional, retail tone. Highlight key terms like '30% off' or 'free shipping' using bold markdown.";
 
 $requestBody = [
     'generationConfig' => [
-        'systemInstruction' => $systemInstruction,
+        // ❗ CRITICAL FIX: The key must be 'system_instruction' (snake_case)
+        'system_instruction' => $systemInstructionValue,
         'temperature' => 0.7,
     ],
     'contents' => [
