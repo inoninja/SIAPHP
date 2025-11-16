@@ -53,7 +53,7 @@ require_once __DIR__ . '/../../components/header.php';
                 <div class="product-grid">
                     <a href="product-the-dominica.php" class="product-card">
                         <div class="product-card-image">
-                            <img src="assets/him_collection_assets/The-Dominica-Crochet-Shirt-Tierra.png" alt="Striped Knit Polo">
+                            <img src=".../him_collection/him_collection_assets/The-Dominica-Crochet-Shirt-Tierra.png" alt="Striped Knit Polo">
                         </div>
                         <h4>The Leisure Knit Polo</h4>
                         <p class="price-info">$149.00</p>
