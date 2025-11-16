@@ -100,9 +100,7 @@ $cssFile = "homepage.css";
 
         try {
             // 3. Call the PHP Proxy Endpoint (Correct Path)
-            // Assuming your API endpoint is now at /api/chat.php based on standard practice.
-            // If you moved it to /script/chat.php, use that path instead.
-            const response = await fetch('/api/chat.php', { 
+            const response = await fetch('/../../../database/chat.php', { 
                 method: 'POST',
                 body: formData
             });
