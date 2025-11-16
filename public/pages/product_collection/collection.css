@@ -1,22 +1,24 @@
-/* her_collection.css */
+/* collection.css - Consolidated and Fixed Styles for both Her and Him */
 
 /* --- Variables and Global Reset --- */
 :root {
-    --primary-font: 'Playfair Display', serif; 
-    --secondary-font: 'Poppins', sans-serif; 
-    --brand-dark: #1e1e1e; 
-    --brand-accent: #8b0000; 
-    --background-light: #ffffff;
-    --subtle-gray: #f4f4f4; 
-    --social-icon-color: #555555;
+    --primary-font: 'Playfair Display', serif; 
+    --secondary-font: 'Poppins', sans-serif; 
+    --brand-dark: #1e1e1e; 
+    --brand-accent: #8b0000; 
+    --brand-gold: #c3b091; /* Used in him_collection.css */
+    --background-light: #ffffff;
+    --subtle-gray: #f4f4f4; 
+    --social-icon-color: #555555;
+    --muted: #666; /* Used in him_collection.css */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: var(--secondary-font); 
-    color: var(--brand-dark); 
-    line-height: 1.6; 
-    background-color: var(--subtle-gray); 
+    font-family: var(--secondary-font); 
+    color: var(--brand-dark); 
+    line-height: 1.6; 
+    background-color: var(--subtle-gray); 
 }
 a { text-decoration: none; color: inherit; }
 
@@ -27,77 +29,94 @@ a { text-decoration: none; color: inherit; }
 /* --- Utility Icons (for header.php) --- */
 .icon-anchor { display: inline-flex; align-items: center; justify-content: center; }
 .icon-anchor img { 
-    width: 22px; 
-    height: 22px; 
-    object-fit: contain; 
-    display: block; 
-    transition: opacity 0.18s ease, transform 0.18s ease; 
-    /* Assuming header.php handles the filter: brightness(0) for dark icons */
+    width: 22px; 
+    height: 22px; 
+    object-fit: contain; 
+    display: block; 
+    transition: opacity 0.18s ease, transform 0.18s ease; 
+    filter: brightness(0); /* Make icons dark */
 }
 .icon-anchor img:hover { opacity: 0.75; transform: translateY(-1px); }
 
 /* --- Header & Navigation (for header.php) --- */
-.promo-bar { 
-    background-color: var(--brand-accent); 
-    color: white; 
-    text-align: center; 
-    padding: 5px 0; 
-    font-size: 0.85em; 
-}
+.promo-bar { background-color: var(--brand-accent); color: white; text-align: center; padding: 5px 0; font-size: 0.85em; }
 .promo-bar span { margin: 0 15px; }
-
-.header-main { 
-    padding: 15px 0; 
-    border-bottom: 1px solid #eee; 
-    background: white; 
-    position: sticky; 
-    top: 0; 
-    z-index: 100; 
-}
+.header-main { padding: 15px 0; border-bottom: 1px solid #eee; background: white; position: sticky; top: 0; z-index: 100; }
 .header-content { display: flex; justify-content: space-between; align-items: center; }
 .nav-left, .nav-right { flex: 1; display: flex; align-items: center; }
-.logo { 
-    font-family: var(--primary-font); 
-    font-size: 2.2em; 
-    letter-spacing: 2px; 
-    font-weight: 400; 
-    text-align: center; 
-    flex: 2; 
-}
-.nav-links a { 
-    margin: 0 12px; 
-    text-transform: uppercase; 
-    font-weight: 400; 
-    font-size: 0.8em; 
-    letter-spacing: 0.5px; 
-}
+.logo { font-family: var(--primary-font); font-size: 2.2em; letter-spacing: 2px; font-weight: 400; text-align: center; flex: 2; }
+.nav-links a { margin: 0 12px; text-transform: uppercase; font-weight: 400; font-size: 0.8em; letter-spacing: 0.5px; }
 .nav-links a.active { font-weight: 600; }
 .utility-icons { display: flex; justify-content: flex-end; align-items: center; }
 .utility-icons a { margin-left: 20px; display: inline-flex; align-items: center; justify-content: center; }
+.search-icon { margin-left: 0; }
+.cart-count { background: #222; color: #fff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; margin-left: 6px }
 
-/* --- Page Content: Collection Hero --- */
+/* --- HERO SECTION (SHARED STYLES) --- */
 .collection-hero { 
-    background-color: white; 
+    background-color: #d1b4a8; /* Fallback color */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    min-height: 400px;
+    
     text-align: left; 
-    padding: 60px 0 0; 
-    margin-bottom: 0; 
+    padding: 100px 0; /* Ensures the text is centered vertically */
+    margin-bottom: 0;
+    position: relative;
+    z-index: 0;
 }
+
+/* Optional Overlay for better text contrast */
+.collection-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); 
+    z-index: 1;
+}
+
 .collection-hero h1 { 
     font-family: var(--primary-font); 
-    font-size: 3.5em; 
+    font-size: 4.5em; /* Consistent large hero font */
     font-weight: 400; 
     margin-bottom: 10px; 
     padding-left: 20px; 
-}
-.collection-hero p { 
-    font-size: 1.1em; 
-    color: #555; 
-    margin-bottom: 0; 
-    padding-left: 20px; 
-    padding-bottom: 20px; /* Added for spacing */
+    
+    color: white; /* White text for visibility */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); 
+    position: relative; 
+    z-index: 2;
 }
 
-/* --- Page Content: Product Listing --- */
+.collection-hero p { 
+    font-size: 1.1em; 
+    color: white; /* White subtitle */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+    margin-bottom: 0; 
+    padding-left: 20px; 
+    position: relative; 
+    z-index: 2;
+}
+
+
+/* --- HERO SECTION (SPECIFIC BACKGROUNDS) --- */
+
+/* Him Collection Background (Uses him_collection_assets for file location) */
+.him-hero {
+    background-image: url('him_collection_assets/hero_men_bg.jpg'); /* REPLACE with actual Him image path */
+}
+
+/* Her Collection Background (Uses her_collection_assets for file location) */
+.her-hero {
+    background-image: url('her_collection_assets/hero_women_bg.jpg'); /* REPLACE with actual Her image path */
+}
+
+
+/* --- Page Content: Product Listing & Filters (SHARED STYLES) --- */
 .collection-content { 
     display: grid; 
     grid-template-columns: 250px 1fr; 
@@ -182,6 +201,7 @@ a { text-decoration: none; color: inherit; }
     text-transform: none; 
 }
 
+/* --- Product Grid and Card Fixes (SHARED STYLES) --- */
 .product-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
@@ -189,15 +209,38 @@ a { text-decoration: none; color: inherit; }
     padding-bottom: 80px; 
 }
 .product-card { display: block; text-align: left; }
-.product-card-image { position: relative; overflow: hidden; margin-bottom: 15px; }
+
+/* FIX: Forces a 3:4 aspect ratio for product images (common for fashion) */
+.product-card-image { 
+    position: relative; 
+    overflow: hidden; 
+    margin-bottom: 15px; 
+    width: 100%;
+    padding-top: 133.33%; /* 400px / 300px = 1.3333... (4:3 ratio) */
+    height: 0;
+}
 .product-card-image img { 
+    position: absolute; 
+    top: 0;
+    left: 0;
     width: 100%; 
-    height: auto; 
+    height: 100%;
+    object-fit: cover; 
     display: block; 
     transition: transform 0.3s ease; 
 }
 .product-card-image:hover img { transform: scale(1.05); }
-.product-card h4 { font-size: 1em; font-weight: 400; margin-bottom: 5px; }
+
+/* FIX: Set a fixed minimum height for consistent title/price alignment (Allows for two lines of text) */
+.product-card h4 { 
+    font-size: 1em; 
+    font-weight: 400; 
+    margin-bottom: 5px;
+    min-height: 2.8em; /* Ensures space for 2 lines of text (1.4 line-height * 2) */
+    line-height: 1.4;
+    overflow: hidden;
+}
+
 .product-card .price-info { font-size: 0.9em; font-weight: 600; }
 .product-card .sale-price { color: var(--brand-accent); margin-left: 8px; }
 .product-card .original-price { 
@@ -214,6 +257,7 @@ a { text-decoration: none; color: inherit; }
     padding: 5px 10px; 
     font-size: 0.75em; 
     font-weight: 600; 
+    z-index: 10;
 }
 
 /* --- Footer (for footer.php) --- */
@@ -228,11 +272,7 @@ a { text-decoration: none; color: inherit; }
     gap: 50px; 
     padding-bottom: 60px; 
 }
-.newsletter-section .person-icon { 
-    font-size: 2.5em; 
-    margin-bottom: 10px; 
-    color: #7d7d7d; 
-}
+/* Removed redundant newsletter-section styles from her_collection.css that aren't necessary for consistency */
 .newsletter-section h2 { 
     font-family: var(--primary-font); 
     font-size: 2.2em; 
@@ -294,21 +334,24 @@ a { text-decoration: none; color: inherit; }
     font-size: 0.75em; 
 }
 
-/* --- Media Queries --- */
+/* --- Media Queries (SHARED STYLES) --- */
 @media (max-width: 720px) {
-    .collection-hero h1 { font-size: 2.2em; }
-    .nav-links { display: none; }
-    .icon-anchor img { width: 20px; height: 20px; filter: none; }
-    .collection-content { 
-        grid-template-columns: 1fr; 
-        padding-top: 30px; 
-        min-height: auto; 
+    .collection-hero {
+        min-height: 300px;
     }
-    .sidebar-filters { 
-        border-right: none; 
-        padding-right: 0; 
-        padding-left: 0; 
-    }
+    .collection-hero h1 { font-size: 2.8em; }
+    .nav-links { display: none; }
+    .icon-anchor img { width: 20px; height: 20px; filter: none; }
+    .collection-content { 
+        grid-template-columns: 1fr; 
+        padding-top: 30px; 
+        min-height: auto; 
+    }
+    .sidebar-filters { 
+        border-right: none; 
+        padding-right: 0; 
+        padding-left: 0; 
+    }
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px 15px;
