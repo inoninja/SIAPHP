@@ -18,6 +18,7 @@ RUN update-ca-certificates
 
 # Install the PostgreSQL driver for PHP.
 RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-install pdo pdo_pgsql curl
 
 # Copy Composer from the official image.
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
