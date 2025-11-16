@@ -1,57 +1,45 @@
 <?php
-// homepage.php
+//homepage.php
 session_start();
 require_once __DIR__ . '/../../../database/db.php';
 
-// Page title
-$pageTitle = "MAISON MUGLER - Homepage";
-
-
-// include header (even if CSS is inline, header.php likely includes nav + structure)
-require_once __DIR__ . '/../../components/header.php';
+// Set page title and CSS file
+ $pageTitle = "Homepage";
+ $cssFile = "homepage.css";
 ?>
+<?php require_once __DIR__ . '/../../components/header.php'; ?>
 
-<section class="hero">
-    <video autoplay muted loop playsinline class="hero-video" poster="assets/images/hero-poster.jpg">
-        <source src="./vid1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <div class="hero-overlay">
-        <div class="hero-content">
-            <h1>WELCOME TO THE<br>WAREHOUSE<br>SALE</h1>
-            <div class="hero-cta">
-                <a href="new_arrivals.php">Shop the Sale →</a>
+    <section class="hero" style="background-image: url('https://via.placeholder.com/1600x800/402927/ffffff?text=WELCOME+TO+THE+WAREHOUSE+SALE+IMAGE');">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>WELCOME TO THE<br>WAREHOUSE<br>SALE</h1>
+                <div class="hero-cta">
+                    <a href="/sale">Shop the Sale →</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="collections-placeholder">
-    <div class="container" style="height: 50vh; display:flex; align-items:center; justify-content:center;">
-        <h2 style="font-family: var(--primary-font); font-weight: 400;">(Product Collections Go Here)</h2>
-    </div>
-</section>
+    <section style="height: 50vh; display: flex; align-items: center; justify-content: center;">
+      <h2 style="font-family: var(--primary-font); font-weight: 400;">(Product Collections Go Here)</h2>
+    </section>
 
-<div class="container feature-row">
-    <div class="feature-item">
-        <span class="icon">🎁</span>
-        <h4>ENJOY 30% OFF FOR LABOR DAY</h4>
-        <p>Plus, Buy two, get one free on all shorts</p>
+    <div class="container feature-row">
+        <div class="feature-item">
+            <span class="icon">🎁</span> <h4>ENJOY 30% OFF FOR LABOR DAY</h4>
+            <p>Plus, Buy two, get one free on all shorts</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">🚚</span> <h4>FAST AND FREE SHIPPING</h4>
+            <p>Get free shipping on orders of $150 or more</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">🔄</span> <h4>FREE EXCHANGES, EASY RETURNS</h4>
+            <p>Find the perfect fit, just for you.</p>
+        </div>
     </div>
-    <div class="feature-item">
-        <span class="icon">🚚</span>
-        <h4>FAST AND FREE SHIPPING</h4>
-        <p>Get free shipping on orders of $150 or more</p>
-    </div>
-    <div class="feature-item">
-        <span class="icon">🔄</span>
-        <h4>FREE EXCHANGES, EASY RETURNS</h4>
-        <p>Find the perfect fit, just for you.</p>
-    </div>
-</div>
 
-<div id="chatbot-container">
+    <div id="chatbot-container">
     <div id="chatbot-button" onclick="toggleChatbot()">
         <span class="icon">💬</span> Chat
     </div>
@@ -89,11 +77,11 @@ require_once __DIR__ . '/../../components/header.php';
     // --- CHATBOT KNOWLEDGE BASE (THE BRAIN) ---
     const chatbotResponses = {
         "hello|hi|hey": "Hello there! I'm here to help you with the sale.",
-        "sale|discount|labor day": "Our Warehouse Sale offers **30% off**, plus buy two, get one free on all shorts!",
-        "shipping|delivery|free shipping": "We offer **fast and free shipping** on all orders of $150 or more.",
-        "return|exchange": "Yes! We offer **free exchanges and easy returns** to help you find the perfect fit.",
+        "sale|discount|labor day": "Our Warehouse Sale offers 30% off, plus buy two, get one free on all shorts!",
+        "shipping|delivery|free shipping": "We offer fast and free shipping on all orders of $150 or more.",
+        "return|exchange": "Yes! We offer free exchanges and easy returns to help you find the perfect fit.",
         "thank|thanks|bye": "You're welcome! Have a great time shopping!",
-        "default": "I'm a simple assistant. Try asking about the **sale**, **shipping**, or **returns**."
+        "default": "I'm a simple assistant. Try asking about the sale, shipping, or returns."
     };
 
     // --- MESSAGE HANDLING ---
@@ -147,6 +135,4 @@ require_once __DIR__ . '/../../components/header.php';
     }
 </script>
 
-<?php
-require_once __DIR__ . '/../../components/footer.php';
-?>
+<?php require_once __DIR__ . '/../../components/footer.php'; ?>

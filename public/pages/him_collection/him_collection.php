@@ -13,12 +13,6 @@ require_once __DIR__ . '/../../components/header.php';
 </head>
 <body>
 
-    <div class="promo-bar">
-        <span class="icon">←</span> Free shipping on all over the Philippines <span class="icon">→</span>
-    </div>
-
-    
-    
     <main>
         <section class="collection-hero">
             <div class="container">
