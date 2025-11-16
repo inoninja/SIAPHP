@@ -47,7 +47,7 @@ require_once __DIR__ . '/../../components/header.php';
                     </a>
                     <a href="#" class="product-card">
                         <div class="product-card-image">
-                            <img src="him_collection_assets/men2.png" alt="Emerald Robe">
+                            <img src="him_collection_assets/MEN2.png" alt="Emerald Robe">
                         </div>
                         <h4>The Hotel Robe - Emerald</h4>
                         <p class="price-info">$189.00</p>
@@ -55,7 +55,7 @@ require_once __DIR__ . '/../../components/header.php';
                     <a href="#" class="product-card">
                         <div class="product-card-image">
                             <span class="sale-tag">Save 15%</span>
-                            <img src="him_collection_assets/men3.png" alt="Striped Button Down">
+                            <img src="him_collection_assets/MEN3.png" alt="Striped Button Down">
                         </div>
                         <h4>The Brisa Striped Shirt</h4>
                         <p class="price-info"><span class="original-price">$169.00</span> <span class="sale-price">$143.00</span></p>
@@ -63,42 +63,42 @@ require_once __DIR__ . '/../../components/header.php';
                     <a href="#" class="product-card">
                         <h2 style="font-family:var(--primary-font); margin-bottom:20px;">Shirt and Tops</h2>
                         <div class="product-card-image">
-                            <img src="him_collection_assets/men4.png" alt="Cream Knit Polo">
+                            <img src="him_collection_assets/MEN4.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
                         <p class="price-info">$175.00</p>
                     </a>
                         <a href="#" class="product-card">
                         <div class="product-card-image">
-                            <img src="him_collection_assets/men5.png" alt="Cream Knit Polo">
+                            <img src="him_collection_assets/MEN5.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
                         <p class="price-info">$175.00</p>
                     </a>
                         <a href="#" class="product-card">
                         <div class="product-card-image">
-                            <img src="him_collection_assets/men6.png" alt="Cream Knit Polo">
+                            <img src="him_collection_assets/MEN6.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
                         <p class="price-info">$175.00</p>
                                             <a href="#" class="product-card">
                         <h2 style="font-family:var(--primary-font); margin-bottom:20px;">Pants and Shorts</h2>
                         <div class="product-card-image">
-                            <img src="him_collection_assets/men7.png" alt="Cream Knit Polo">
+                            <img src="him_collection_assets/MEN7.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
                         <p class="price-info">$175.00</p>
                     </a>
                         <a href="#" class="product-card">
                         <div class="product-card-image">
-                            <img src="him_collection_assets/men8.png" alt="Cream Knit Polo">
+                            <img src="him_collection_assets/MEN8.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
                         <p class="price-info">$175.00</p>
                     </a>
                         <a href="#" class="product-card">
                         <div class="product-card-image">
-                            <img src="him_collection_assets/men9.png" alt="Cream Knit Polo">
+                            <img src="him_collection_assets/MEN9.png" alt="Cream Knit Polo">
                         </div>
                         <h4>The Riviera Knit Sweater</h4>
                         <p class="price-info">$175.00</p>
