@@ -66,38 +66,23 @@ $cssFile = "homepage.css";
         const button = document.getElementById('chatbot-button');
         const box = document.getElementById('chatbot-box');
         
-        // Toggle the 'open' class
         box.classList.toggle('open');
         
-        // Hide the button when the box is open, show it when closed
         if (box.classList.contains('open')) {
-            button.style.display = 'none'; // Hide button when opening box
-            // Scroll to bottom of chat history when opening
+            button.style.display = 'none'; // Hide button
             document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
             document.getElementById('user-input').focus();
         } else {
-            button.style.display = 'flex'; // Show button when closing box
+            button.style.display = 'flex'; // Show button
         }
     }
 
-    // --- CHATBOT KNOWLEDGE BASE (THE BRAIN) ---
-    const chatbotResponses = {
-        "hello|hi|hey": "Hello there! I'm here to help you with the sale.",
-        "sale|discount|labor day": "Our Warehouse Sale offers **30% off**, plus **buy two, get one free on all shorts**!",
-        "shipping|delivery|free shipping": "We offer fast and free shipping on all orders of $150 or more.",
-        "return|exchange": "Yes! We offer **free exchanges** and **easy returns** to help you find the perfect fit.",
-        "thank|thanks|bye": "You're welcome! Have a great time shopping!",
-        "default": "I'm a simple assistant. Try asking about the sale, shipping, or returns."
-    };
+    // NOTE: The old 'chatbotResponses' object is removed since you are now using the Gemini API.
 
-    // --- MESSAGE HANDLING ---
+    // --- MESSAGE HANDLING (Now correctly sequenced for API call) ---
     async function sendMessage() {
         const inputField = document.getElementById('user-input');
         const userText = inputField.value.trim();
-        const response = await fetch('/../../../database/chat.php', { // <-- ENSURE THIS PATH IS CORRECT
-            method: 'POST',
-            body: formData
-        });
 
         if (userText === "") return;
 
@@ -109,13 +94,15 @@ $cssFile = "homepage.css";
         inputField.disabled = true;
         inputField.placeholder = "Thinking...";
 
-        // 2. Prepare Data for PHP Proxy
+        // 2. Prepare Data for PHP Proxy (DEFINED HERE BEFORE FETCH)
         const formData = new FormData();
         formData.append('message', userText);
 
         try {
-            // 3. Call the PHP Proxy Endpoint
-            const response = await fetch('/api/chat.php', { // <-- ADJUST PATH AS NEEDED
+            // 3. Call the PHP Proxy Endpoint (Correct Path)
+            // Assuming your API endpoint is now at /api/chat.php based on standard practice.
+            // If you moved it to /script/chat.php, use that path instead.
+            const response = await fetch('/api/chat.php', { 
                 method: 'POST',
                 body: formData
             });
