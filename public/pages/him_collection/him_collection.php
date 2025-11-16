@@ -22,13 +22,8 @@ require_once __DIR__ . '/../../components/header.php';
 
         <section class="collection-content container">
             <aside class="sidebar-filters">
-                <button class="filter-toggle active">
-                    <span class="icon"> </span> Hide filters
-                </button>
                 <div class="filter-group"><h4 class="filter-title">Material <span class="icon">⌄</span></h4></div>
-                <div class="filter-group"><h4 class="filter-title">Product type <span class="icon">⌄</span></h4></div>
                 <div class="filter-group"><h4 class="filter-title">Category <span class="icon">⌄</span></h4></div>
-                <div class="filter-group"><h4 class="filter-title">Size <span class="icon">⌄</span></h4></div>
             </aside>
 
             <section class="product-listing">
@@ -37,9 +32,6 @@ require_once __DIR__ . '/../../components/header.php';
                         <a href="#" class="nav-link">New Arrivals</a> /
                         <a href="#" class="nav-link">Shirts and Tops</a> /
                         <a href="#" class="nav-link">Pants and Shorts</a> /
-                        <a href="#" class="nav-link">Swim</a> /
-                        <a href="#" class="nav-link">Suiting</a> /
-                        <a href="#" class="nav-link">Accessories</a>
                     </nav>
                     <div class="sort-control">
                         <label for="sort-by">Sort by:</label>
@@ -53,7 +45,7 @@ require_once __DIR__ . '/../../components/header.php';
                 <div class="product-grid">
                     <a href="product-the-dominica.php" class="product-card">
                         <div class="product-card-image">
-                            <img src=".../him_collection/him_collection_assets/The-Dominica-Crochet-Shirt-Tierra.png" alt="Striped Knit Polo">
+                            <img src="him_collection_assets/men1.png" alt="Long Sleeve Polo">
                         </div>
                         <h4>The Leisure Knit Polo</h4>
                         <p class="price-info">$149.00</p>
