@@ -41,7 +41,7 @@ a { text-decoration: none; color: inherit; }
 /* Hero */
 .hero {
   height: 60vh;
-  background: url('assets/na1.png') center center/cover no-repeat;
+  background: url('na1.png') center center/cover no-repeat;
   display: flex; align-items: center; color: white; position: relative;
 }
 .hero::after {

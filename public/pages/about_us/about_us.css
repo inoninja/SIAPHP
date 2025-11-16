@@ -119,7 +119,7 @@ a {
 .hero {
   height: 60vh;
   /* Use relative path assuming assets/ is at the root */
-  background: url('../../assets/au1.png') center center/cover no-repeat;
+  background: url('au1.png') center center/cover no-repeat;
   display: flex; 
   align-items: center; 
   justify-content: flex-start; 
