@@ -1,9 +1,10 @@
 # Use the official PHP 8.2.12 image with the Apache web server
 FROM php:8.2.12-apache
 
-# Install system dependencies.
+# Install system dependencies, INCLUDING THE cURL DEV HEADERS
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    libcurl4-openssl-dev \
     unzip \
     curl \
     git \
@@ -12,12 +13,10 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 🚀 CRITICAL FIX FOR NEON/SSL CONNECTIONS:
-# Install the common certificate authority bundle.
-# This fixes many "SSL handshake failed" or related connection errors.
 RUN update-ca-certificates
 
-# Install the PostgreSQL driver for PHP.
-RUN docker-php-ext-install pdo pdo_pgsql
+# Install the necessary PHP extensions.
+# Note: curl is added here after its dev headers are installed above.
 RUN docker-php-ext-install pdo pdo_pgsql curl
 
 # Copy Composer from the official image.
