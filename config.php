@@ -12,5 +12,6 @@ define('DB_USER', $_ENV['DB_USER']);
 define('DB_PASS', $_ENV['DB_PASS']);
 define('DB_PORT', $_ENV['DB_PORT']);
 define('DB_ENDPOINT', $_ENV['DB_ENDPOINT']);
+define('GEMINI_API_KEY', $_ENV['GEMINI_API_KEY']);
 
 ?>

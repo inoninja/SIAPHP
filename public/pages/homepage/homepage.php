@@ -91,25 +91,56 @@ $cssFile = "homepage.css";
     };
 
     // --- MESSAGE HANDLING ---
-    function sendMessage() {
+    async function sendMessage() {
         const inputField = document.getElementById('user-input');
         const userText = inputField.value.trim();
+        const response = await fetch('/../../../database/chat.php', { // <-- ENSURE THIS PATH IS CORRECT
+            method: 'POST',
+            body: formData
+        });
 
         if (userText === "") return;
 
-        // 1. Display User Message
+        // 1. Display User Message & Clear Input
         displayMessage(userText, 'user-message');
-
-        // 2. Get Bot Response
-        const botResponse = getBotResponse(userText);
-
-        // 3. Display Bot Response after a small delay
-        setTimeout(() => {
-            displayMessage(botResponse, 'bot-message');
-        }, 500);
-
-        // 4. Clear Input
         inputField.value = '';
+        
+        // Disable input while waiting for API
+        inputField.disabled = true;
+        inputField.placeholder = "Thinking...";
+
+        // 2. Prepare Data for PHP Proxy
+        const formData = new FormData();
+        formData.append('message', userText);
+
+        try {
+            // 3. Call the PHP Proxy Endpoint
+            const response = await fetch('/api/chat.php', { // <-- ADJUST PATH AS NEEDED
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.response) {
+                // 4. Display Bot Response
+                setTimeout(() => {
+                    displayMessage(data.response, 'bot-message');
+                }, 500);
+            } else {
+                // Handle errors from the PHP side
+                displayMessage('Error: ' + (data.error || 'Could not get a response from the AI assistant.'), 'bot-message');
+            }
+
+        } catch (e) {
+            console.error("Fetch Error:", e);
+            displayMessage('Network error. Please try again later.', 'bot-message');
+        } finally {
+            // Re-enable input
+            inputField.disabled = false;
+            inputField.placeholder = "Ask a question...";
+            inputField.focus();
+        }
     }
 
     function displayMessage(text, className) {
@@ -122,22 +153,6 @@ $cssFile = "homepage.css";
         
         messagesContainer.appendChild(newMessage);
         messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll to bottom
-    }
-
-    function getBotResponse(userInput) {
-        const normalizedInput = userInput.toLowerCase();
-
-        // Check for keyword matches in the chatbotResponses object
-        for (const key in chatbotResponses) {
-            // Create a regex from the key (allowing | for OR)
-            const regex = new RegExp(`\\b(${key})\\b`);
-            if (regex.test(normalizedInput)) {
-                return chatbotResponses[key];
-            }
-        }
-
-        // Return default response if no keyword is found
-        return chatbotResponses.default;
     }
 </script>
 
