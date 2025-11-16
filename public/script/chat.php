@@ -4,7 +4,7 @@
 session_start();
 
 // Load configuration where GEMINI_API_KEY is defined
-require_once __DIR__ . '/../../config.php';
+require_once __DIR__ . '../../../config.php';
 
 // --- 1. Basic Security and Input Validation ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['message'])) {
