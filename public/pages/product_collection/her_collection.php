@@ -1,5 +1,5 @@
 <?php 
-$page_title = "Him Collection - Shirts & Tops | MAISON MUGLER"; 
+$page_title = "Her Collection - Shirts & Tops | MAISON MUGLER"; 
 require_once __DIR__ . '/../../components/header.php';
 ?>
 <!DOCTYPE html>

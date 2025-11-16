@@ -36,7 +36,7 @@ a { text-decoration: none; color: inherit; }
 /* Collection Styles (UPDATED FOR BACKGROUND IMAGE) */
 .collection-hero { 
     background-color: #d1b4a8; /* Fallback color */
-    background-image: url('him_collection_assets/hero_men_bg.jpg'); /* NOTE: Update this path to your actual image! */
+    background-image: url('him_collection_assets/MC1.png'); /* NOTE: Update this path to your actual image! */
     background-size: cover; 
     background-position: center top; 
     background-repeat: no-repeat;

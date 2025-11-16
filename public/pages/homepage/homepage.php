@@ -11,7 +11,7 @@ $cssFile = "homepage.css";
 
     <section class="hero hero-video">
         <video autoplay loop muted playsinline class="hero-background-video">
-            <source src="assets/vid1.mp4" type="video/mp4">
+            <source src="vid1.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
