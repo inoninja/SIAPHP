@@ -4,12 +4,17 @@ session_start();
 require_once __DIR__ . '/../../../database/db.php';
 
 // Set page title and CSS file
- $pageTitle = "Homepage";
- $cssFile = "homepage.css";
+$pageTitle = "Homepage";
+$cssFile = "homepage.css";
 ?>
 <?php require_once __DIR__ . '/../../components/header.php'; ?>
 
-    <section class="hero" style="background-image: url('https://via.placeholder.com/1600x800/402927/ffffff?text=WELCOME+TO+THE+WAREHOUSE+SALE+IMAGE');">
+    <section class="hero hero-video">
+        <video autoplay loop muted playsinline class="hero-background-video">
+            <source src="assets/vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1>WELCOME TO THE<br>WAREHOUSE<br>SALE</h1>

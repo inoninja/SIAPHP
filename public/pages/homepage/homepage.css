@@ -37,8 +37,8 @@ a {
 
 /* Icon Placeholders */
 .icon {
-  font-size: 1.1em;
-  display: inline-block;
+    font-size: 1.1em;
+    display: inline-block;
 }
 
 /* ------------------------------------------- */
@@ -54,7 +54,7 @@ a {
     font-size: 0.85em;
 }
 .promo-bar span {
-  margin: 0 15px;
+    margin: 0 15px;
 }
 
 /* Main Header */
@@ -74,9 +74,9 @@ a {
 }
 
 .nav-left, .nav-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 /* Logo (The key design element) */
@@ -107,12 +107,30 @@ a {
 .search-icon { margin-left: 0; }
 
 /* ------------------------------------------- */
-/* 3. Hero Section (Warehouse Sale Image) */
+/* 3. Hero Section (Video Background) */
 /* ------------------------------------------- */
-.hero {
-    height: 90vh; /* Adjust height based on view */
-    background: url('hero-placeholder-sale.jpg') center center/cover no-repeat;
+
+/* Container for the video, set height and position context */
+.hero-video {
+    min-height: 90vh; /* Adjusted to use min-height for flexible content */
     position: relative;
+    overflow: hidden; /* Important to clip the video edges */
+}
+
+/* The actual video element styles */
+.hero-background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Ensure the video covers the entire container area */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0; /* Ensures the video is at the lowest layer */
+    /* Center the video using CSS transform */
+    transform: translate(-50%, -50%); 
+    object-fit: cover; /* Ensures video covers the area without distorting aspect ratio */
 }
 
 .hero-overlay {
@@ -125,11 +143,14 @@ a {
     background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.4) 100%);
     display: flex;
     align-items: center;
+    z-index: 1; /* Puts the overlay above the video */
 }
 
 .hero-content {
     color: white;
     margin-left: 5%; 
+    position: relative; /* Ensure content respects z-index hierarchy */
+    z-index: 2; /* Puts content above the overlay */
 }
 
 .hero-content h1 {
@@ -141,8 +162,8 @@ a {
 }
 
 .hero-cta {
-  margin-top: 40px;
-  text-align: right;
+    margin-top: 40px;
+    text-align: right;
 }
 
 .hero-cta a {
@@ -167,27 +188,27 @@ a {
 
 /* Top features row */
 .feature-row {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  padding: 50px 0;
-  border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 50px 0;
+    border-top: 1px solid #eee;
 }
 .feature-item {
-  width: 30%;
+    width: 30%;
 }
 .feature-item .icon {
-  font-size: 2em;
-  margin-bottom: 10px;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 .feature-item p {
-  font-size: 0.9em;
-  color: #666;
+    font-size: 0.9em;
+    color: #666;
 }
 
 /* Footer Main Content */
 .footer-main {
-    background: var(--brand-light); /* Lighter background than the very bottom bar */
+    background: var(--background-light); /* Assuming background-light is what was intended */
     padding: 60px 0;
 }
 .footer-grid {
@@ -198,7 +219,7 @@ a {
 
 /* Newsletter Section */
 .newsletter-section {
-  padding-right: 50px;
+    padding-right: 50px;
 }
 .newsletter-section h2 {
     font-family: var(--primary-font);
