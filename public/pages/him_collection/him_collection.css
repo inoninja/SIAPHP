@@ -1,14 +1,14 @@
 /* All CSS from the original request, structured for clarity */
 :root {
-    --primary-font: 'Playfair Display', serif; 
-    --secondary-font: 'Poppins', sans-serif; 
-    --brand-dark: #1e1e1e; 
-    --brand-accent: #8b0000; 
-    --brand-gold: #c3b091; 
-    --background-light: #ffffff;
-    --subtle-gray: #f4f4f4; 
-    --social-icon-color: #555555;
-    --muted: #666;
+    --primary-font: 'Playfair Display', serif; 
+    --secondary-font: 'Poppins', sans-serif; 
+    --brand-dark: #1e1e1e; 
+    --brand-accent: #8b0000; 
+    --brand-gold: #c3b091; 
+    --background-light: #ffffff;
+    --subtle-gray: #f4f4f4; 
+    --social-icon-color: #555555;
+    --muted: #666;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,10 +48,15 @@ a { text-decoration: none; color: inherit; }
 .sort-select { background-color: var(--brand-dark); color: white; border: none; padding: 8px 15px; text-transform: uppercase; font-size: 0.75em; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>'); background-repeat: no-repeat; background-position: right 8px center; padding-right: 30px; cursor: pointer; }
 
 /* Product Grid and Card Styles */
-.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 25px; padding-bottom: 80px; }
+.product-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px 25px; 
+    padding-bottom: 80px; 
+}
+
 .product-card { display: block; text-align: left; }
 
-/* === FIX APPLIED HERE: Enforce 1:1 Aspect Ratio for 1000x1000px look === */
 .product-card-image { 
     position: relative; 
     overflow: hidden; 
@@ -73,10 +78,19 @@ a { text-decoration: none; color: inherit; }
     display: block; 
     transition: transform 0.3s ease; 
 }
-/* ====================================================================== */
 
 .product-card-image:hover img { transform: scale(1.05); }
-.product-card h4 { font-size: 1em; font-weight: 400; margin-bottom: 5px; }
+
+/* FIX: Set a fixed minimum height for consistent title/price alignment (2 lines of text) */
+.product-card h4 { 
+    font-size: 1em; 
+    font-weight: 400; 
+    margin-bottom: 5px;
+    min-height: 2.8em; /* Adjusted height for two lines of text (1.4 line-height * 2) */
+    line-height: 1.4;
+    overflow: hidden;
+}
+
 .product-card .price-info { font-size: 0.9em; font-weight: 600; }
 .product-card .sale-price { color: var(--brand-accent); margin-left: 8px; }
 .product-card .original-price { text-decoration: line-through; color: #888; font-weight: 400; }
@@ -95,9 +109,9 @@ a { text-decoration: none; color: inherit; }
 .footer-bar { background: var(--brand-dark); color: white; text-align: left; padding: 15px 20px; font-size: 0.75em; }
 
 @media (max-width: 720px) {
-    .collection-hero h1 { font-size: 2.2em; }
-    .nav-links { display: none; }
-    .icon-anchor img { width: 20px; height: 20px; filter: none; } 
-    .collection-content { grid-template-columns: 1fr; padding-top: 30px; min-height: auto; }
-    .sidebar-filters { border-right: none; padding-right: 0; padding-left: 0; }
+    .collection-hero h1 { font-size: 2.2em; }
+    .nav-links { display: none; }
+    .icon-anchor img { width: 20px; height: 20px; filter: none; } 
+    .collection-content { grid-template-columns: 1fr; padding-top: 30px; min-height: auto; }
+    .sidebar-filters { border-right: none; padding-right: 0; padding-left: 0; }
 }
